@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 15:14:19 by rumachad          #+#    #+#             */
-/*   Updated: 2024/03/27 15:57:52 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/03/27 17:45:46 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,31 +16,29 @@
 
 int main()
 {
-/* 	const Animal* meta = new Animal();
+	std::cout << "Leaks Test" << std::endl;
+	
 	const Animal* dog = new Dog();
 	const Animal* cat = new Cat();
-	
-	std::cout << dog->getType() << " " << std::endl;
-	std::cout << cat->getType() << " " << std::endl;
-	cat->makeSound(); //will output the cat sound!
-	dog->makeSound();
-	meta->makeSound();
 
 	delete dog;
 	delete cat;
-	delete meta;
 	
-	return 0; */
+	std::cout << "Deep Copies Test" << std::endl;
 
-	const	WrongAnimal* meta = new WrongAnimal();
-	const	WrongAnimal* cat = new WrongCat();
 	
-	std::cout << cat->getType() << " " << std::endl;
-	cat->makeSound(); // will output the wrong cat sound
-	meta->makeSound();
+	
+	std::cout << "Constructors and Destructors Test" << std::endl;
+	
+	const Animal* animals[6];
+	
+	for (size_t i = 0; i < 3; i++)
+		animals[i] = new Dog();
+	for (size_t i = 3; i < 6; i++)
+		animals[i] = new Cat();
+	std::cout << "\n";
+	for (size_t i = 0; i < 10; i++)
+		delete animals[i];
 
-	delete cat;
-	delete meta;
-	
 	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/18 16:42:23 by rumachad          #+#    #+#              #
-#    Updated: 2024/03/27 13:03:19 by rumachad         ###   ########.fr        #
+#    Updated: 2024/03/27 17:06:30 by rumachad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ NAME = poly
 
 SRC =	Dog.cpp \
 		Cat.cpp \
+		Brain.cpp \
 		WrongCat.cpp \
 		WrongAnimal.cpp \
 		Animal.cpp \

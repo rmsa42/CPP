@@ -1,45 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   WrongAnimal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 16:47:08 by rumachad          #+#    #+#             */
-/*   Updated: 2024/03/27 15:57:29 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/03/18 17:37:57 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "WrongAnimal.hpp"
 
-Animal::Animal() : type("")
+WrongAnimal::WrongAnimal() : type("")
 {
-	std::cout << "Animal default constructor" << std::endl;
+	std::cout << "WrongAnimal default constructor" << std::endl;
 }
 
-Animal::Animal(const Animal &obj)
+WrongAnimal::WrongAnimal(const WrongAnimal &obj)
 {
-	std::cout << "Animal copy constructor" << std::endl;
+	std::cout << "WrongAnimal copy constructor" << std::endl;
 	*this = obj;
 }
 
-Animal::~Animal()
+WrongAnimal::~WrongAnimal()
 {
-	std::cout << "Animal destructor" << std::endl;
+	std::cout << "WrongAnimal destructor" << std::endl;
 }
 
 /* --------------------------------------------------------- */
 
-Animal &Animal::operator=(const Animal &obj)
+WrongAnimal &WrongAnimal::operator=(const WrongAnimal &obj)
 {
 	if (this != &obj)
 		this->type = obj.getType();
 	return (*this);
 }
 
-std::string	Animal::getType() const {return (this->type);}
+std::string	WrongAnimal::getType() const {return (this->type);}
 
-void	Animal::makeSound() const
+void	WrongAnimal::makeSound() const
 {
-	std::cout << "Animal: Animal sound" << std::endl;
+	std::cout << "WrongAnimal: WrongAnimal sound" << std::endl;
 }

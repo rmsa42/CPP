@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 17:05:32 by rumachad          #+#    #+#             */
-/*   Updated: 2024/03/18 17:38:00 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/03/27 15:57:17 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,9 @@ Dog	&Dog::operator=(const Dog &obj)
 {
 	Animal::operator=(obj);
 	return (*this);
+}
+
+void	Dog::makeSound() const
+{
+	std::cout << "Dog: bark bark" << std::endl;
 }
