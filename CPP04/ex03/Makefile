@@ -6,19 +6,13 @@
 #    By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/18 16:42:23 by rumachad          #+#    #+#              #
-#    Updated: 2024/04/01 12:19:31 by rumachad         ###   ########.fr        #
+#    Updated: 2024/04/01 15:55:28 by rumachad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = brain
+NAME = interface
 
-SRC =	Dog.cpp \
-		Cat.cpp \
-		Brain.cpp \
-		WrongCat.cpp \
-		WrongAnimal.cpp \
-		Animal.cpp \
-		main.cpp
+SRC =	main.cpp
 
 OBJ = $(SRC:.cpp=.o)
 

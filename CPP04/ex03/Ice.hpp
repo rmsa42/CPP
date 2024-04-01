@@ -1,38 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   Ice.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/18 17:02:03 by rumachad          #+#    #+#             */
-/*   Updated: 2024/04/01 11:45:06 by rumachad         ###   ########.fr       */
+/*   Created: 2024/04/01 16:39:35 by rumachad          #+#    #+#             */
+/*   Updated: 2024/04/01 16:46:38 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-# define DOG_HPP
+#ifndef ICE_HPP
+# define ICE_HPP
 
-# include "Brain.hpp"
-# include "Animal.hpp"
+# include "AMateria.hpp"
 
-class Dog: public Animal
+class Ice : public AMateria
 {
 public:
 
-	Dog();
-	Dog(const Dog &obj);
-	virtual ~Dog();
+	Ice();
+	Ice(const Ice &obj);
+	virtual ~Ice();
 	
-	Dog	&operator=(const Dog &obj);
+	Ice	&operator=(const Ice &obj);
 
-	virtual void	makeSound() const;
-	
-	Brain* getBrain() const;
-	
-private:
+	AMateria*	clone() const;
 
-	Brain *	_brain;
+	/* virtual void	use(ICharacter& target); */
+
 };
 
 #endif

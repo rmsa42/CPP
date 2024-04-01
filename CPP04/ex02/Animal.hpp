@@ -1,38 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/18 17:02:03 by rumachad          #+#    #+#             */
-/*   Updated: 2024/04/01 11:45:06 by rumachad         ###   ########.fr       */
+/*   Created: 2024/03/18 16:45:24 by rumachad          #+#    #+#             */
+/*   Updated: 2024/04/01 13:56:29 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-# define DOG_HPP
+#ifndef ANIMAL_HPP
+# define ANIMAL_HPP
 
-# include "Brain.hpp"
-# include "Animal.hpp"
+# include <iostream>
+# include <string>
 
-class Dog: public Animal
+class Animal
 {
 public:
 
-	Dog();
-	Dog(const Dog &obj);
-	virtual ~Dog();
+	Animal();
+	Animal(const Animal &obj);
+	virtual ~Animal();
 	
-	Dog	&operator=(const Dog &obj);
+	Animal	&operator=(const Animal &obj);
 
-	virtual void	makeSound() const;
+	std::string	getType() const;
 	
-	Brain* getBrain() const;
-	
-private:
+	virtual void	makeSound() const = 0;
 
-	Brain *	_brain;
+protected:
+
+	std::string	type;
 };
 
 #endif

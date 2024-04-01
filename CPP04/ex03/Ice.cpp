@@ -1,45 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Brain.cpp                                          :+:      :+:    :+:   */
+/*   Ice.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/27 16:17:22 by rumachad          #+#    #+#             */
-/*   Updated: 2024/04/01 10:59:35 by rumachad         ###   ########.fr       */
+/*   Created: 2024/04/01 16:40:12 by rumachad          #+#    #+#             */
+/*   Updated: 2024/04/01 16:56:09 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Brain.hpp"
+#include "Ice.hpp"
 
-Brain::Brain()
+Ice::Ice()
 {
-	this->ideas = new std::string[100];
-	for (size_t i = 0; i < 100; i++)
-		this->ideas[i] = "Big Brain Ideas";
-	std::cout << "Brain Constructor" << std::endl;
+	std::cout << "Ice Constructor" << std::endl;
+	this->_type = "ice";
 }
 
-Brain::Brain(const Brain &obj)
+Ice::Ice(const Ice &obj)
 {
-	std::cout << "Brain copy constructor" << std::endl;
+	std::cout << "Ice copy constructor" << std::endl;
 	*this = obj;
 }
 
-Brain::~Brain()
+Ice::~Ice()
 {
-	delete[] this->ideas;
-	std::cout << "Brain Destructor" << std::endl;	
+	std::cout << "Ice Destructor" << std::endl;	
 }
 
 /* ----------------------------------------------- */
 
-Brain	&Brain::operator=(const Brain &obj)
+Ice	&Ice::operator=(const Ice &obj)
 {
 	if (this != &obj)
-	{
-		for (size_t i = 0; i < 100; i++)
-			this->ideas[i] = obj.ideas[i];
-	}
+		AMateria::operator=(obj);
 	return (*this);
+}
+
+AMateria*	Ice::clone() const
+{
+	return (new Ice(*this));
 }

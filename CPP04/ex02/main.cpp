@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 15:14:19 by rumachad          #+#    #+#             */
-/*   Updated: 2024/04/01 16:54:43 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/04/01 16:03:54 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,17 +51,9 @@ void	destructorsTest()
 
 int main()
 {
-	/* deepCopieTest();
+	deepCopieTest();
 	std::cout << std::endl;
-	destructorsTest(); */
-
-	Cat* cat = new Cat();
-	Cat* copy = new Cat();
-
-	std::cout << cat->getType() << std::endl;
-	std::cout << copy->getType() << std::endl;
+	destructorsTest();
 	
-	delete cat;
-	delete copy;
 	return (0);
 }

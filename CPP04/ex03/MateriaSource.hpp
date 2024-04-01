@@ -1,38 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   MateriaSource.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/18 17:02:03 by rumachad          #+#    #+#             */
-/*   Updated: 2024/04/01 11:45:06 by rumachad         ###   ########.fr       */
+/*   Created: 2024/04/01 17:27:28 by rumachad          #+#    #+#             */
+/*   Updated: 2024/04/01 17:34:10 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-# define DOG_HPP
+#ifndef MATERIASOURCE_HPP
+# define MATERIASOURCE_HPP
 
-# include "Brain.hpp"
-# include "Animal.hpp"
+# include "IMateriaSource.hpp"
 
-class Dog: public Animal
+class MateriaSource : public IMateriaSource
 {
 public:
 
-	Dog();
-	Dog(const Dog &obj);
-	virtual ~Dog();
+	MateriaSource();
+	MateriaSource(const MateriaSource &obj);
+	virtual ~MateriaSource();
 	
-	Dog	&operator=(const Dog &obj);
+	void	learnMateria(AMateria* spell);
+	AMateria* createMatria(std::string const & type);
+	MateriaSource	&operator=(const MateriaSource &obj);
 
-	virtual void	makeSound() const;
-	
-	Brain* getBrain() const;
-	
-private:
-
-	Brain *	_brain;
 };
 
 #endif

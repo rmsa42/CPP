@@ -1,38 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   ICharacter.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/18 17:02:03 by rumachad          #+#    #+#             */
-/*   Updated: 2024/04/01 11:45:06 by rumachad         ###   ########.fr       */
+/*   Created: 2024/04/01 17:03:38 by rumachad          #+#    #+#             */
+/*   Updated: 2024/04/01 17:04:01 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-# define DOG_HPP
+# include "ICharacter.hpp"
 
-# include "Brain.hpp"
-# include "Animal.hpp"
-
-class Dog: public Animal
-{
-public:
-
-	Dog();
-	Dog(const Dog &obj);
-	virtual ~Dog();
-	
-	Dog	&operator=(const Dog &obj);
-
-	virtual void	makeSound() const;
-	
-	Brain* getBrain() const;
-	
-private:
-
-	Brain *	_brain;
-};
-
-#endif
+ICharacter::~ICharacter() {}
