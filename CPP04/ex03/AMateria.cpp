@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AMateria.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rumachad <rumachad@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 16:21:45 by rumachad          #+#    #+#             */
-/*   Updated: 2024/04/01 16:57:41 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/04/01 21:36:28 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,9 @@ AMateria	&AMateria::operator=(const AMateria &obj)
 {
 	this->_type = obj._type;
 	return (*this);
+}
+
+void	AMateria::use(ICharacter& target)
+{
+	std::cout << "This should never be used" << std::endl;
 }
