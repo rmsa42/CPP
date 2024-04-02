@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MateriaSource.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rumachad <rumachad@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 17:27:28 by rumachad          #+#    #+#             */
-/*   Updated: 2024/04/01 17:34:10 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/04/01 20:16:29 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ public:
 	AMateria* createMatria(std::string const & type);
 	MateriaSource	&operator=(const MateriaSource &obj);
 
+private:
+
+	AMateria*	space[4];
 };
 
 #endif

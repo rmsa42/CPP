@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Character.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rumachad <rumachad@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 17:05:18 by rumachad          #+#    #+#             */
-/*   Updated: 2024/04/01 17:28:39 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/04/01 20:14:45 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ public:
 
 private:
 	
-	std::string		_name;
-	MateriaSource	_inventory[4];
+	std::string	_name;
+	AMateria*	inventory[4];
 };
 
 #endif

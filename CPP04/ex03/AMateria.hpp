@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AMateria.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rumachad <rumachad@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 16:21:11 by rumachad          #+#    #+#             */
-/*   Updated: 2024/04/01 16:56:28 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/04/01 21:35:22 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define AMATERIA_HPP
 
 # include <iostream>
+# include "ICharacter.hpp"
 
 class AMateria
 {
@@ -28,7 +29,7 @@ public:
 	std::string const & getType() const;
 	
 	virtual	AMateria* clone() const = 0;
-	/* virtual void	use(ICharacter& target); */
+	virtual void	use(ICharacter& target);
 
 protected:
 	

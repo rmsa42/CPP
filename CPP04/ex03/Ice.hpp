@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Ice.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rumachad <rumachad@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 16:39:35 by rumachad          #+#    #+#             */
-/*   Updated: 2024/04/01 16:46:38 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/04/01 20:41:09 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define ICE_HPP
 
 # include "AMateria.hpp"
+# include "ICharacter.hpp"
 
 class Ice : public AMateria
 {
@@ -27,7 +28,7 @@ public:
 
 	AMateria*	clone() const;
 
-	/* virtual void	use(ICharacter& target); */
+	virtual void	use(ICharacter& target);
 
 };
 

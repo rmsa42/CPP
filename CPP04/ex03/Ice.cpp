@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Ice.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rumachad <rumachad@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 16:40:12 by rumachad          #+#    #+#             */
-/*   Updated: 2024/04/01 16:56:09 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/04/01 20:39:04 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,10 @@ Ice	&Ice::operator=(const Ice &obj)
 AMateria*	Ice::clone() const
 {
 	return (new Ice(*this));
+}
+
+void	Ice::use(ICharacter& target)
+{
+	std::cout << "* shoots an ice bolt at "
+			  << target.getName() << " *" << std::endl;
 }
