@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 16:03:37 by rumachad          #+#    #+#             */
-/*   Updated: 2024/04/02 14:44:12 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/04/02 15:55:01 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ void	PhoneBook::printTable() const
 void	PhoneBook::search()
 {
 	std::string	input_index;
+	int maxindex;
 	
 	std::cout << CLEAR << "Search Contact" << std::endl;
 	if (this->id == 0)
@@ -93,11 +94,15 @@ void	PhoneBook::search()
 		std::cin.ignore();
 		return ;
 	}
+	if (this->id > 7)
+		maxindex = 8;
+	else
+		maxindex = this->id;
 	this->printTable();
 	std::cout << "Choose Index to show: ";
 	std::getline(std::cin, input_index);
-	if (input_index.length() == 1
-		&& input_index[0] >= '0' && input_index[0] <= '7')
+	if (input_index.length() == 1 && input_index[0] >= '0'
+		&& input_index[0] <= '7' && (input_index[0] - '0') < maxindex)
 		this->print_chart(input_index[0] - '0');
 	else
 		std::cout << "Wrong Index" << std::endl;
