@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Character.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rumachad <rumachad@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/01 17:09:45 by rumachad          #+#    #+#             */
-/*   Updated: 2024/04/01 21:36:46 by rumachad         ###   ########.fr       */
+/*   Created: 2024/04/03 15:23:23 by rumachad          #+#    #+#             */
+/*   Updated: 2024/04/03 16:32:03 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 Character::Character() : _name("Default")
 {
 	std::cout << "Character Constructor" << std::endl;
-	for (size_t i = 0; i < 4; i++)
-		this->inventory[i] = nullptr;
+	for (int i = 0; i < 4; i++)
+		this->inv[i] = NULL;
 }
 
-Character::Character(const std::string name) : _name(name)
+Character::Character(const std::string &name) : _name(name)
 {
-	std::cout << "Character Name constructor" << std::endl;
+	std::cout << "Character Name Constructor" << std::endl;
 }
 
 Character::Character(const Character &obj)
@@ -32,7 +32,9 @@ Character::Character(const Character &obj)
 
 Character::~Character()
 {
-	std::cout << "Character Destructor" << std::endl;	
+	std::cout << "Character Destructor" << std::endl;
+	/* for (int i = 0; i < 4; i++)
+		delete this->inv[i]; */
 }
 
 /* ----------------------------------------------- */
@@ -40,31 +42,31 @@ Character::~Character()
 Character	&Character::operator=(const Character &obj)
 {
 	if (this != &obj)
-		this->_name = obj.getName();
+	{
+		this->_name = obj._name;
+		for (int i = 0; i < 4; i++)
+			this->inv[i] = obj.inv[i];
+	}
 	return (*this);
 }
 
-std::string const &Character::getName() const {return (this->_name);}
+std::string const & Character::getName() const
+{
+	return (this->_name);
+}
 
 void	Character::equip(AMateria* m)
 {
-	for (size_t i = 0; i < 4; i++)
-	{
-		if (this->inventory[i] == nullptr)
-		{
-			this->inventory[i] = m;
-			break ;
-		}
-	}
-}
-
-void	Character::use(int idx, ICharacter& target)
-{
-	this->inventory[idx]->use(target);
+	this->inv[0] = m;
 }
 
 void	Character::unequip(int idx)
 {
-	delete this->inventory[idx];
-	/* No delete the materia */
+	/* AMateria* tmp = this->inv[idx]; */
+	this->inv[idx] = NULL;
+}
+
+void	Character::use(int idx, ICharacter& target)
+{
+	this->inv[idx]->use(target);
 }

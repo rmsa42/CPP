@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AMateria.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rumachad <rumachad@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/01 16:21:11 by rumachad          #+#    #+#             */
-/*   Updated: 2024/04/01 21:35:22 by rumachad         ###   ########.fr       */
+/*   Created: 2024/04/03 14:34:30 by rumachad          #+#    #+#             */
+/*   Updated: 2024/04/03 16:11:50 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,24 @@
 # define AMATERIA_HPP
 
 # include <iostream>
+# include <string>
 # include "ICharacter.hpp"
+
+class ICharacter;
 
 class AMateria
 {
 public:
 
 	AMateria();
-	/* AMateria(const AMateria &obj); */
 	AMateria(std::string const & type);
+	AMateria(const AMateria &obj);
 	virtual ~AMateria();
 	
 	AMateria	&operator=(const AMateria &obj);
-	std::string const & getType() const;
 	
+	std::string const & getType() const;
+
 	virtual	AMateria* clone() const = 0;
 	virtual void	use(ICharacter& target);
 

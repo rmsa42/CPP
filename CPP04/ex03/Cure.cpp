@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cure.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rumachad <rumachad@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/01 20:42:22 by rumachad          #+#    #+#             */
-/*   Updated: 2024/04/01 20:44:59 by rumachad         ###   ########.fr       */
+/*   Created: 2024/04/03 15:11:38 by rumachad          #+#    #+#             */
+/*   Updated: 2024/04/03 15:17:14 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,13 @@
 Cure::Cure()
 {
 	std::cout << "Cure Constructor" << std::endl;
-	this->_type = "Cure";
+	this->_type = "cure";
 }
 
 Cure::Cure(const Cure &obj)
 {
 	std::cout << "Cure copy constructor" << std::endl;
+	this->_type = "cure";
 	*this = obj;
 }
 
@@ -33,18 +34,18 @@ Cure::~Cure()
 
 Cure	&Cure::operator=(const Cure &obj)
 {
-	if (this != &obj)
-		AMateria::operator=(obj);
+	AMateria::operator=(obj);
 	return (*this);
 }
 
-AMateria*	Cure::clone() const
+AMateria* Cure::clone() const
 {
-	return (new Cure(*this));
+	return (new Cure());
 }
 
-void	Cure::use(ICharacter& target)
+/* Finish this Function */
+/* void	Cure::use(ICharacter& target)
 {
-	std::cout << "* heals " << target.getName()
-			  << "'s wounds *" << std::endl;
-}
+	std::cout << "* heals " << target
+			  << "'s wounds" << " *" << std::endl;
+} */

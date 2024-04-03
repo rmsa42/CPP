@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cure.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rumachad <rumachad@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/01 20:39:56 by rumachad          #+#    #+#             */
-/*   Updated: 2024/04/01 20:45:42 by rumachad         ###   ########.fr       */
+/*   Created: 2024/04/03 15:12:11 by rumachad          #+#    #+#             */
+/*   Updated: 2024/04/03 15:14:30 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define CURE_HPP
 
 # include "AMateria.hpp"
-# include "ICharacter.hpp"
 
 class Cure : public AMateria
 {
@@ -22,14 +21,12 @@ public:
 
 	Cure();
 	Cure(const Cure &obj);
-	virtual ~Cure();
-
+	~Cure();
+	
 	Cure	&operator=(const Cure &obj);
 
-	AMateria*	clone() const;
-	
-	virtual void	use(ICharacter& target);
-	
+	AMateria* clone() const;
+	/* void	use(ICharacter& target); */
 };
 
 #endif

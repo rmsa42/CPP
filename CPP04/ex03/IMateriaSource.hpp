@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/01 17:22:49 by rumachad          #+#    #+#             */
-/*   Updated: 2024/04/01 17:24:55 by rumachad         ###   ########.fr       */
+/*   Created: 2024/04/03 15:41:25 by rumachad          #+#    #+#             */
+/*   Updated: 2024/04/03 16:15:49 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,10 @@
 class IMateriaSource
 {
 public:
-
-	virtual	~IMateriaSource() {};
-	virtual void	learnMateria(AMateria*) = 0;
-	virtual	AMateria*	createMateria(std::string const & type) = 0;
 	
+	virtual ~IMateriaSource() {};
+	virtual void learnMateria(AMateria*) = 0;
+	virtual AMateria* createMateria(std::string const & type) = 0;
 };
 
 #endif

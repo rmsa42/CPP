@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Ice.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rumachad <rumachad@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/01 16:40:12 by rumachad          #+#    #+#             */
-/*   Updated: 2024/04/01 20:39:04 by rumachad         ###   ########.fr       */
+/*   Created: 2024/04/03 14:55:03 by rumachad          #+#    #+#             */
+/*   Updated: 2024/04/03 16:32:56 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ Ice::Ice()
 Ice::Ice(const Ice &obj)
 {
 	std::cout << "Ice copy constructor" << std::endl;
+	this->_type = "ice";
 	*this = obj;
 }
 
@@ -33,14 +34,13 @@ Ice::~Ice()
 
 Ice	&Ice::operator=(const Ice &obj)
 {
-	if (this != &obj)
-		AMateria::operator=(obj);
+	AMateria::operator=(obj);
 	return (*this);
 }
 
-AMateria*	Ice::clone() const
+AMateria* Ice::clone() const
 {
-	return (new Ice(*this));
+	return (new Ice());
 }
 
 void	Ice::use(ICharacter& target)
