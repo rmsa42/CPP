@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cure.hpp                                           :+:      :+:    :+:   */
+/*   LinkedList.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/03 15:12:11 by rumachad          #+#    #+#             */
-/*   Updated: 2024/04/04 10:29:48 by rumachad         ###   ########.fr       */
+/*   Created: 2024/04/04 17:16:41 by rumachad          #+#    #+#             */
+/*   Updated: 2024/04/04 17:22:45 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CURE_HPP
-# define CURE_HPP
+#ifndef LINKEDLIST_HPP
+# define LINKEDLIST_HPP
 
 # include "AMateria.hpp"
 
-class Cure : public AMateria
+class LinkedList
 {
 public:
 
-	Cure();
-	Cure(const Cure &obj);
-	~Cure();
+	LinkedList();
+	/* LinkedList(const LinkedList &obj); */
+	~LinkedList();
 	
-	Cure	&operator=(const Cure &obj);
+	/* LinkedList	&operator=(const LinkedList &obj); */
 
-	AMateria* clone() const;
-	void	use(ICharacter& target);
+	AMateria* spell;
+	class LinkedList* next;
 };
 
 #endif

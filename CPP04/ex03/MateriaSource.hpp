@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 15:47:57 by rumachad          #+#    #+#             */
-/*   Updated: 2024/04/03 16:06:10 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/04/04 12:09:52 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ public:
 	AMateria* createMateria(std::string const & type);
 
 private:
-	
+
+	void	initSpace();	
 	AMateria* space[4];
 };
 

@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 14:51:23 by rumachad          #+#    #+#             */
-/*   Updated: 2024/04/03 16:31:33 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/04/04 16:56:19 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,36 @@
 
 int main()
 {
-	AMateria* tmp = new Ice();
+	AMateria* tmp;
+	MateriaSource* src = new MateriaSource();
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
+
+	MateriaSource* t = new MateriaSource(*src);
 	
 	ICharacter* me = new Character("Bob");
 
-	ICharacter* clone = new Character("Clone");
+	ICharacter* clone = new Character("clone");
+	/* Character* me = new Character("Bob"); */
 
-	me->equip(tmp);
+	tmp = src->createMateria("ice");
+	me->equip(tmp);//0
+	tmp = src->createMateria("ice");
+	me->equip(tmp);//1
+	tmp = src->createMateria("cure");
+	me->equip(tmp);//2
+	tmp = src->createMateria("ice");
+	me->equip(tmp);//3
+	tmp = src->createMateria("ice");
+	me->equip(tmp);//4
+
 	me->use(0, *clone);
+	me->use(1, *clone);
 	
-	delete tmp;
 	delete me;
+	delete t;
 	delete clone;
+	delete src;
+
 	return (0);
 }

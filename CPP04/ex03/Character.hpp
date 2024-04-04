@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 15:23:53 by rumachad          #+#    #+#             */
-/*   Updated: 2024/04/03 15:54:44 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/04/04 17:32:28 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CHARACTER_HPP
 
 # include "ICharacter.hpp"
+# include "LinkedList.hpp"
 
 class Character : public ICharacter
 {
@@ -33,8 +34,11 @@ public:
 
 private:
 	
+	void	initInv();
 	std::string	_name;
-	AMateria* inv[4];
+	LinkedList*	head;
+	LinkedList*	floor;
+	AMateria*	inv[4];
 };
 
 #endif

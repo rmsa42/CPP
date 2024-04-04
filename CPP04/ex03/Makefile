@@ -6,7 +6,7 @@
 #    By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/18 16:42:23 by rumachad          #+#    #+#              #
-#    Updated: 2024/04/03 16:20:20 by rumachad         ###   ########.fr        #
+#    Updated: 2024/04/04 12:06:49 by rumachad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ CFLAGS = -Wall -Werror -Wextra -std=c++98
 all: $(NAME)
 
 $(NAME): $(OBJ)
-		c++ -o $(NAME) $(OBJ) -fsanitize=address
+		c++ -o $(NAME) $(OBJ)
 
 %.o: %.cpp
 	c++ $(CFLAGS) -c $< -o $@

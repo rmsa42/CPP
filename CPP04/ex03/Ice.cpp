@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 14:55:03 by rumachad          #+#    #+#             */
-/*   Updated: 2024/04/03 16:32:56 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/04/04 12:12:37 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 
 Ice::Ice()
 {
-	std::cout << "Ice Constructor" << std::endl;
+	/* std::cout << "Ice Constructor" << std::endl; */
 	this->_type = "ice";
 }
 
 Ice::Ice(const Ice &obj)
 {
-	std::cout << "Ice copy constructor" << std::endl;
+	/* std::cout << "Ice copy constructor" << std::endl; */
 	this->_type = "ice";
 	*this = obj;
 }
 
 Ice::~Ice()
 {
-	std::cout << "Ice Destructor" << std::endl;	
+	/* std::cout << "Ice Destructor" << std::endl;	 */
 }
 
 /* ----------------------------------------------- */

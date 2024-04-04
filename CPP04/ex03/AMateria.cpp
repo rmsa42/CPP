@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 14:37:19 by rumachad          #+#    #+#             */
-/*   Updated: 2024/04/03 16:10:19 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/04/04 12:22:29 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ AMateria::AMateria() : _type("Default")
 
 AMateria::AMateria(std::string const & type) : _type(type)
 {
-	std::cout << "AMateria type Constructor" << std::endl;
+	/* std::cout << "AMateria type Constructor" << std::endl; */
 }
 
 AMateria::AMateria(const AMateria &obj)
 {
-	std::cout << "AMateria copy constructor" << std::endl;
+	/* std::cout << "AMateria copy constructor" << std::endl; */
 	*this = obj;
 }
 

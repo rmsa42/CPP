@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 15:11:38 by rumachad          #+#    #+#             */
-/*   Updated: 2024/04/03 15:17:14 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/04/04 12:12:57 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 
 Cure::Cure()
 {
-	std::cout << "Cure Constructor" << std::endl;
+	/* std::cout << "Cure Constructor" << std::endl; */
 	this->_type = "cure";
 }
 
 Cure::Cure(const Cure &obj)
 {
-	std::cout << "Cure copy constructor" << std::endl;
+	/* std::cout << "Cure copy constructor" << std::endl; */
 	this->_type = "cure";
 	*this = obj;
 }
 
 Cure::~Cure()
 {
-	std::cout << "Cure Destructor" << std::endl;	
+	/* std::cout << "Cure Destructor" << std::endl;	 */
 }
 
 /* ----------------------------------------------- */
@@ -43,9 +43,8 @@ AMateria* Cure::clone() const
 	return (new Cure());
 }
 
-/* Finish this Function */
-/* void	Cure::use(ICharacter& target)
+void	Cure::use(ICharacter& target)
 {
-	std::cout << "* heals " << target
+	std::cout << "* heals " << target.getName()
 			  << "'s wounds" << " *" << std::endl;
-} */
+}
