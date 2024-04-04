@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rumachad <rumachad@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 12:50:39 by rumachad          #+#    #+#             */
-/*   Updated: 2024/02/15 01:07:18 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/04/03 12:04:04 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	check_out(std::string &buffer, const std::string &str1, const std::string &
 	{
 		std::cout << buffer << std::endl;
 		buffer = buffer.substr(0, pos) + str2 + buffer.substr(pos + str1_len);
-		pos += str1.length();
+		pos += str2.length();
 	}
 }
 

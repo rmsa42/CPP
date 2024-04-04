@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rumachad <rumachad@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 15:07:48 by rumachad          #+#    #+#             */
-/*   Updated: 2024/02/15 22:40:04 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/04/04 15:31:06 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
 
-//Faxer loop return int
 int	getlvl(char *input)
 {
 	std::string	lvls[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
@@ -24,16 +23,6 @@ int	getlvl(char *input)
 	return (i);
 }
 
-int	error_arg(int level)
-{
-	if (level > 3)
-	{
-		std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
-		return (1);
-	}
-	return (0);
-}
-
 int	main(int argc, char *argv[])
 {
 	Harl	harl;
@@ -42,27 +31,24 @@ int	main(int argc, char *argv[])
 	if (argc == 2)
 	{
 		level = getlvl(argv[1]);
-		if (error_arg(level))
-			return (0);
-		while (level < 4)
+		switch (level)
 		{
-			switch (level)
-			{
-				case 0:
-					harl.complain("DEBUG");
-					break;
-				case 1:
-					harl.complain("INFO");
-					break;
-				case 2:
-					harl.complain("WARNING");
-					break;
-				case 3:
-					harl.complain("ERROR");
-					break;
-			}
-			std::cout << std::endl;
-			level++;
+			case 0:
+				harl.complain("DEBUG");
+				std::cout << std::endl;
+			case 1:
+				harl.complain("INFO");
+				std::cout << std::endl;
+			case 2:
+				harl.complain("WARNING");
+				std::cout << std::endl;
+			case 3:
+				harl.complain("ERROR");
+				std::cout << std::endl;
+				break;
+			default:
+				std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
+				break;
 		}
 	}
 	else

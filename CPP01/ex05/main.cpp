@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rumachad <rumachad@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 15:07:48 by rumachad          #+#    #+#             */
-/*   Updated: 2024/02/15 16:11:04 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/04/03 12:22:43 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,9 @@ int	main(void)
 
 	printWelcome();
 	std::cout << "Command: ";
-	while (std::cin >> input)
+	while (std::getline(std::cin, input))
 	{
 		harl.complain(input);
-		std::cin.ignore();
 		std::cout << "Command: ";
 	}
 	return (0);
