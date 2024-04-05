@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 14:51:23 by rumachad          #+#    #+#             */
-/*   Updated: 2024/04/04 16:56:19 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/04/05 17:56:13 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@
 #include "Ice.hpp"
 #include "Cure.hpp"
 
+//-----------Problems------------
+//Equip the same Materia twice, deletes it twice (seg fault)
+//Character and MaterialSource copies overload
+//-------------------------------
 int main()
 {
 	AMateria* tmp;
@@ -32,19 +36,16 @@ int main()
 	ICharacter* clone = new Character("clone");
 	/* Character* me = new Character("Bob"); */
 
-	tmp = src->createMateria("ice");
-	me->equip(tmp);//0
-	tmp = src->createMateria("ice");
-	me->equip(tmp);//1
-	tmp = src->createMateria("cure");
-	me->equip(tmp);//2
-	tmp = src->createMateria("ice");
-	me->equip(tmp);//3
-	tmp = src->createMateria("ice");
-	me->equip(tmp);//4
-
+	for (int i = 0; i < 4; i++)
+	{
+		tmp = src->createMateria("ice");
+		me->equip(tmp);
+	}
+	
 	me->use(0, *clone);
 	me->use(1, *clone);
+	me->unequip(10);
+	me->unequip(0);
 	
 	delete me;
 	delete t;

@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 14:37:19 by rumachad          #+#    #+#             */
-/*   Updated: 2024/04/04 12:22:29 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/04/05 17:44:17 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 AMateria::AMateria() : _type("Default")
 {
-	std::cout << "AMateria Constructor" << std::endl;
+	/* std::cout << "AMateria Constructor" << std::endl; */
 }
 
 AMateria::AMateria(std::string const & type) : _type(type)
@@ -30,7 +30,7 @@ AMateria::AMateria(const AMateria &obj)
 
 AMateria::~AMateria()
 {
-	std::cout << "AMateria Destructor" << std::endl;	
+	/* std::cout << "AMateria Destructor" << std::endl;	 */
 }
 
 /* ----------------------------------------------- */
@@ -50,4 +50,9 @@ std::string const & AMateria::getType() const
 void	AMateria::use(ICharacter& target)
 {
 	std::cout << "This is " << target.getName() << std::endl;
+}
+
+void	Logger(std::string str)
+{
+	std::cout << str << std::endl;	
 }

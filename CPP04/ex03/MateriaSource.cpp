@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 15:47:38 by rumachad          #+#    #+#             */
-/*   Updated: 2024/04/04 12:48:01 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/04/05 17:52:30 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 MateriaSource::MateriaSource()
 {
-	std::cout << "MateriaSource Constructor" << std::endl;
+	/* std::cout << "MateriaSource Constructor" << std::endl; */
 	this->initSpace();
 }
 
@@ -27,7 +27,8 @@ MateriaSource::MateriaSource(const MateriaSource &obj)
 
 MateriaSource::~MateriaSource()
 {
-	std::cout << "MateriaSource Destructor" << std::endl;
+	/* std::cout << "MateriaSource Destructor" << std::endl; */
+	//Delete Materias held by the MateriaSource (Calling Materia Destructor)
 	for (int i = 0; i < 4; i++)
 		delete this->space[i];
 }
@@ -61,16 +62,18 @@ void	MateriaSource::learnMateria(AMateria* spell)
 		if (this->space[i] == NULL)
 		{
 			this->space[i] = spell;
-			break;
+			return ;
 		}
 	}
+	Singleton::getInstance().addSpell(spell);
 }
 
 AMateria*	MateriaSource::createMateria(std::string const &type)
 {
 	if (type == "ice")
 		return (new Ice());
-	else
+	else if (type == "cure")
 		return (new Cure());
+	Logger("Unknown Materia type");
 	return (0);
 }

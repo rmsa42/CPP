@@ -1,32 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   LinkedList.hpp                                     :+:      :+:    :+:   */
+/*   Singleton.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/04 17:16:41 by rumachad          #+#    #+#             */
-/*   Updated: 2024/04/04 17:22:45 by rumachad         ###   ########.fr       */
+/*   Created: 2024/04/05 14:44:25 by rumachad          #+#    #+#             */
+/*   Updated: 2024/04/05 16:14:55 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LINKEDLIST_HPP
-# define LINKEDLIST_HPP
+#ifndef SINGLETON_HPP
+# define SINGLETON_HPP
 
-# include "AMateria.hpp"
+#include "AMateria.hpp"
 
-class LinkedList
+struct SpellList
+{
+	AMateria* spell;
+	SpellList* next;
+};
+
+class Singleton
 {
 public:
-
-	LinkedList();
-	/* LinkedList(const LinkedList &obj); */
-	~LinkedList();
 	
-	/* LinkedList	&operator=(const LinkedList &obj); */
+	void	addSpell(AMateria* s);
+	static		Singleton& getInstance();
 
-	AMateria* spell;
-	class LinkedList* next;
+private:
+	
+	Singleton();
+	Singleton(const Singleton &obj);
+	~Singleton();
+
+	Singleton	&operator=(const Singleton &obj);
+
+	SpellList* list;
 };
 
 #endif
