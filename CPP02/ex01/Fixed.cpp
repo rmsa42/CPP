@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rumachad <rumachad@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 00:27:52 by rumachad          #+#    #+#             */
-/*   Updated: 2024/02/24 00:57:12 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/04/08 13:00:59 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	Fixed::setRawBits(int const raw)
 
 float	Fixed::toFloat() const
 {
-	return (((float)_fixedPoint / (float)(1 << Fixed::_fractionalBits)));	
+	return (((float)_fixedPoint / (float)(1 << Fixed::_fractionalBits)));
 }
 
 int		Fixed::toInt() const

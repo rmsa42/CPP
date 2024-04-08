@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rumachad <rumachad@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 22:52:59 by rumachad          #+#    #+#             */
-/*   Updated: 2024/02/24 00:14:43 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/04/04 14:01:34 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,6 @@ int main( void )
 	std::cout << "b is " << b.toInt() << " as integer" << std::endl;
 	std::cout << "c is " << c.toInt() << " as integer" << std::endl;
 	std::cout << "d is " << d.toInt() << " as integer" << std::endl;
-	
+
 	return 0;
 }

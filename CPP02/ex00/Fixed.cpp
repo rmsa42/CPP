@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rumachad <rumachad@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 00:27:52 by rumachad          #+#    #+#             */
-/*   Updated: 2024/02/23 01:35:52 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/04/03 12:17:44 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
-const int	_fractionalBits = 8;
 
 Fixed::Fixed() : _fixedPoint(0)
 {

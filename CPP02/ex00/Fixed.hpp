@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rumachad <rumachad@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 22:53:37 by rumachad          #+#    #+#             */
-/*   Updated: 2024/02/23 01:33:15 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/04/03 12:17:46 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ public:
 private:
 	
 	int					_fixedPoint;
-	static const int	_fractionalBits;
+	static const int	_fractionalBits = 8;
 };
 
 #endif
