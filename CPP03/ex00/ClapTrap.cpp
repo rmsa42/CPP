@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rumachad <rumachad@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 22:48:15 by rumachad          #+#    #+#             */
-/*   Updated: 2024/03/09 01:59:46 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/04/09 14:41:23 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,10 @@ int	ClapTrap::getAd() const {return (_AD);}
 void	ClapTrap::attack(const std::string &target)
 {
 	if (this->_HP <= 0 || this->_EP <= 0)
+	{
+		std::cout << this->_name << " as no HP/EP" << std::endl;
 		return ;
+	}
 	std::cout << "ClapTrap " << this->_name
 			  << " attacks " << target
 			  << ", causing " << this->_AD << " points of damage"
@@ -71,7 +74,10 @@ void	ClapTrap::attack(const std::string &target)
 void	ClapTrap::takeDamage(unsigned int amount)
 {
 	if (this->_HP <= 0 || this->_EP <= 0)
+	{
+		std::cout << this->_name << " as no HP/EP" << std::endl;
 		return ;
+	}
 	std::cout << "ClapTrap " << this->_name
 			  << " takes " << amount << " points of damage"
 			  << std::endl;
@@ -81,10 +87,22 @@ void	ClapTrap::takeDamage(unsigned int amount)
 void	ClapTrap::beRepaired(unsigned int amount)
 {
 	if (this->_HP <= 0 || this->_EP <= 0)
+	{
+		std::cout << this->_name << " as no HP/EP" << std::endl;
 		return ;
+	}
 	std::cout << "ClapTrap " << this->_name
 			  << " repairs " << amount << " points of damage"
 			  << std::endl;
 	this->_HP += amount;
 	this->_EP -= 1;
+}
+
+void	ClapTrap::printStatus()
+{
+	std::cout << "\nClapTrap " << this->_name << std::endl;
+	std::cout << "HP:" << this->getHp() << std::endl;
+	std::cout << "AD:" << this->getAd() << std::endl;
+	std::cout << "EP:" << this->getEp() << std::endl;
+	std::cout << std::endl;
 }

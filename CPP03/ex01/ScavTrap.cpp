@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rumachad <rumachad@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 14:52:21 by rumachad          #+#    #+#             */
-/*   Updated: 2024/03/09 01:59:32 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/04/09 14:39:16 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,10 @@ ScavTrap &ScavTrap::operator=(const ScavTrap &obj)
 void	ScavTrap::attack(const std::string &target)
 {
 	if (this->_HP <= 0 || this->_EP <= 0)
+	{
+		std::cout << "ScavTrap has no HP/EP" << std::endl;
 		return ;
+	}
 	std::cout << "ScavTrap " << this->_name
 			  << " attacks " << target
 			  << ", causing " << this->_AD << " points of damage"

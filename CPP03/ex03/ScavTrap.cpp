@@ -3,35 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rumachad <rumachad@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 14:52:21 by rumachad          #+#    #+#             */
-/*   Updated: 2024/03/13 01:25:40 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/04/09 14:39:16 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap() : ClapTrap()
+ScavTrap::ScavTrap()
 {
 	std::cout << "ScavTrap defualt constructor" << std::endl;
-	this->_HP = this->_scavAD;
-	this->_EP = this->_scavEP;
-	this->_AD = this->_scavAD;
-}
-
-
-ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
-{
-	std::cout << "ScavTrap string constructor" << std::endl;
-	this->_HP = this->_scavAD;
-	this->_EP = this->_scavEP;
-	this->_AD = this->_scavAD;
+	this->_name = "default";
+	this->_HP = 100;
+	this->_EP = 50;
+	this->_AD = 20;
 }
 
 ScavTrap::ScavTrap(const ScavTrap &obj) : ClapTrap(obj)
 {
 	std::cout << "ScavTrap copy constructor" << std::endl;
+}
+
+ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
+{
+	std::cout << "ScavTrap string constructor" << std::endl;
+	this->_HP = 100;
+	this->_EP = 50;
+	this->_AD = 20;
 }
 
 ScavTrap::~ScavTrap()
@@ -43,14 +43,18 @@ ScavTrap::~ScavTrap()
 
 ScavTrap &ScavTrap::operator=(const ScavTrap &obj)
 {
-	ClapTrap::operator=(obj);
+	if (this != &obj)
+		ClapTrap::operator=(obj);
 	return (*this);
 }
 
 void	ScavTrap::attack(const std::string &target)
 {
 	if (this->_HP <= 0 || this->_EP <= 0)
+	{
+		std::cout << "ScavTrap has no HP/EP" << std::endl;
 		return ;
+	}
 	std::cout << "ScavTrap " << this->_name
 			  << " attacks " << target
 			  << ", causing " << this->_AD << " points of damage"

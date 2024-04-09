@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   DiamondTrap.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rumachad <rumachad@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 14:49:59 by rumachad          #+#    #+#             */
-/*   Updated: 2024/03/13 01:30:25 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/04/09 15:10:57 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ DiamondTrap &DiamondTrap::operator=(const DiamondTrap &obj)
 
 void	DiamondTrap::whoAmI()
 {
-	std::cout << "DiamonTrap " << this->_name
-			  << ", ClapTrap " << this->ClapTrap::_name << std::endl;
+	std::cout << "DiamondTrap name: " << this->_name
+			  << ", ClapTrap name: " << this->ClapTrap::_name << std::endl;
 }
 
 std::string	DiamondTrap::getName() const {return (this->_name);}
