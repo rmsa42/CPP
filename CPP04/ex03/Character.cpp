@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 15:23:23 by rumachad          #+#    #+#             */
-/*   Updated: 2024/04/05 17:50:08 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/04/09 16:15:43 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,7 @@ Character::~Character()
 {
 	/* std::cout << "Character Destructor" << std::endl; */
 	//Delete Materias held by the Character (Calling Materia Destructor)
-	for (int i = 0; i < 4; i++)
-	{
-		if (this->inv[i])
-			delete this->inv[i];
-	}
+	this->clearInv();
 }
 
 /* ----------------------------------------------- */
@@ -49,6 +45,7 @@ Character	&Character::operator=(const Character &obj)
 	if (this != &obj)
 	{
 		this->_name = obj._name;
+		this->clearInv();
 		for (int i = 0; i < 4; i++)
 		{
 			if (obj.inv[i] == NULL)
@@ -66,7 +63,7 @@ std::string const & Character::getName() const
 
 void	Character::equip(AMateria* m)
 {
-	if (m == 0)
+	if (m == 0 || m->getFlag() == true)
 		return ;
 	Logger("Using equip function");
 	for (int i = 0; i < 4; i++)
@@ -74,6 +71,7 @@ void	Character::equip(AMateria* m)
 		if (this->inv[i] == NULL)
 		{
 			this->inv[i] = m;
+			m->setFlag(true);
 			return ;
 		}
 	}
@@ -112,4 +110,13 @@ void	Character::initInv()
 {
 	for (int i = 0; i < 4; i++)
 		this->inv[i] = NULL;
+}
+
+void	Character::clearInv()
+{
+	for (int i = 0; i < 4; i++)
+	{
+		if (this->inv[i])
+			delete this->inv[i];
+	}
 }

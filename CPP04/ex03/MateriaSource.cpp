@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 15:47:38 by rumachad          #+#    #+#             */
-/*   Updated: 2024/04/05 17:52:30 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/04/09 16:16:40 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,7 @@ MateriaSource::~MateriaSource()
 {
 	/* std::cout << "MateriaSource Destructor" << std::endl; */
 	//Delete Materias held by the MateriaSource (Calling Materia Destructor)
-	for (int i = 0; i < 4; i++)
-		delete this->space[i];
+	this->clearSpace();
 }
 
 /* ----------------------------------------------- */
@@ -45,6 +44,7 @@ MateriaSource	&MateriaSource::operator=(const MateriaSource &obj)
 {
 	if (this != &obj)
 	{
+		this->clearSpace();
 		for (int i = 0; i < 4; i++)
 		{
 			if (obj.space[i] == NULL)
@@ -62,6 +62,7 @@ void	MateriaSource::learnMateria(AMateria* spell)
 		if (this->space[i] == NULL)
 		{
 			this->space[i] = spell;
+			spell->setFlag(true);
 			return ;
 		}
 	}
@@ -70,10 +71,17 @@ void	MateriaSource::learnMateria(AMateria* spell)
 
 AMateria*	MateriaSource::createMateria(std::string const &type)
 {
-	if (type == "ice")
-		return (new Ice());
-	else if (type == "cure")
-		return (new Cure());
+	for (int i = 0; i < 4 && this->space[i]; i++)
+	{
+		if (type == this->space[i]->getType())
+			return (this->space[i]->clone());
+	}
 	Logger("Unknown Materia type");
 	return (0);
+}
+
+void	MateriaSource::clearSpace()
+{
+	for (int i = 0; i < 4; i++)
+		delete this->space[i];
 }

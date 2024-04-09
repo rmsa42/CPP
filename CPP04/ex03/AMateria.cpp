@@ -6,18 +6,18 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 14:37:19 by rumachad          #+#    #+#             */
-/*   Updated: 2024/04/05 17:44:17 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/04/09 16:01:53 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AMateria.hpp"
 
-AMateria::AMateria() : _type("Default")
+AMateria::AMateria() : _type("Default"), flag(false)
 {
 	/* std::cout << "AMateria Constructor" << std::endl; */
 }
 
-AMateria::AMateria(std::string const & type) : _type(type)
+AMateria::AMateria(std::string const & type) : _type(type), flag(false)
 {
 	/* std::cout << "AMateria type Constructor" << std::endl; */
 }
@@ -55,4 +55,14 @@ void	AMateria::use(ICharacter& target)
 void	Logger(std::string str)
 {
 	std::cout << str << std::endl;	
+}
+
+void	AMateria::setFlag(bool value)
+{
+	this->flag = value;
+}
+
+bool	AMateria::getFlag()
+{
+	return (this->flag);
 }

@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 15:47:57 by rumachad          #+#    #+#             */
-/*   Updated: 2024/04/05 16:21:34 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/04/09 16:10:02 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ public:
 
 private:
 
-	void	initSpace();	
+	void	initSpace();
+	void	clearSpace();
 	AMateria* space[4];
 };
 
