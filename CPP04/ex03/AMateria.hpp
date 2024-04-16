@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 14:34:30 by rumachad          #+#    #+#             */
-/*   Updated: 2024/04/09 16:00:12 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/04/16 12:01:03 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@
 # include <iostream>
 # include <string>
 # include "ICharacter.hpp"
+
+# define GREEN "\033[0;32m"
+# define RED "\033[0;31m"
+# define RESET "\033[0m"
 
 class ICharacter;
 

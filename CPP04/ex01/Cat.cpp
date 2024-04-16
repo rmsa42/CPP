@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 17:27:20 by rumachad          #+#    #+#             */
-/*   Updated: 2024/04/01 12:18:57 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/04/16 09:55:45 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 Cat::Cat() : _brain(new Brain())
 {
-	std::cout << "Cat constructor" << std::endl;
+	std::cout << "Cat default constructor" << std::endl;
 	this->type = "Cat";
 }
 

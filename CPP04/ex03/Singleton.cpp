@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 15:50:54 by rumachad          #+#    #+#             */
-/*   Updated: 2024/04/05 16:27:39 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/04/16 11:50:51 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 Singleton::Singleton()
 {
-	std::cout << "Singleton Constructor" << std::endl;
+	/* std::cout << "Singleton Constructor" << std::endl; */
 }
 
 Singleton::Singleton(const Singleton &obj)
@@ -24,7 +24,7 @@ Singleton::Singleton(const Singleton &obj)
 
 Singleton::~Singleton()
 {
-	std::cout << "Singleton Destructor" << std::endl;
+	/* std::cout << "Singleton Destructor" << std::endl; */
 	
 	SpellList* tmp;
 	

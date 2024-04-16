@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 14:55:03 by rumachad          #+#    #+#             */
-/*   Updated: 2024/04/04 12:12:37 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/04/16 11:53:41 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ Ice::Ice()
 	this->_type = "ice";
 }
 
-Ice::Ice(const Ice &obj)
+Ice::Ice(const Ice &obj) : AMateria(obj)
 {
 	/* std::cout << "Ice copy constructor" << std::endl; */
 	this->_type = "ice";
@@ -34,7 +34,7 @@ Ice::~Ice()
 
 Ice	&Ice::operator=(const Ice &obj)
 {
-	AMateria::operator=(obj);
+	(void)obj;
 	return (*this);
 }
 

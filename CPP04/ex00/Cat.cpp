@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 17:27:20 by rumachad          #+#    #+#             */
-/*   Updated: 2024/03/27 16:58:28 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/04/16 09:55:52 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 Cat::Cat()
 {
-	std::cout << "Cat constructor" << std::endl;
+	std::cout << "Cat default constructor" << std::endl;
 	this->type = "Cat";
 }
 

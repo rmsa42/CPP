@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 15:23:23 by rumachad          #+#    #+#             */
-/*   Updated: 2024/04/09 16:15:43 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/04/16 10:43:12 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	Character::equip(AMateria* m)
 {
 	if (m == 0 || m->getFlag() == true)
 		return ;
-	Logger("Using equip function");
+	/* Logger("Using equip function"); */
 	for (int i = 0; i < 4; i++)
 	{
 		if (this->inv[i] == NULL)
@@ -90,7 +90,7 @@ void	Character::unequip(int idx)
 		Logger("No Materia in this index");
 		return ;
 	}
-	Logger("Using unequip function");
+	/* Logger("Using unequip function"); */
 	Singleton::getInstance().addSpell(this->inv[idx]);
 	this->inv[idx] = NULL;
 }

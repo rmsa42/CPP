@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 16:45:24 by rumachad          #+#    #+#             */
-/*   Updated: 2024/04/01 12:36:17 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/04/16 10:12:49 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 
 # include <iostream>
 # include <string>
+
+# define GREEN "\033[0;32m"
+# define RED "\033[0;31m"
+# define RESET "\033[0m"
 
 class Animal
 {

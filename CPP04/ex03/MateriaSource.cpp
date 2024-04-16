@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 15:47:38 by rumachad          #+#    #+#             */
-/*   Updated: 2024/04/09 16:16:40 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/04/16 12:07:13 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ MateriaSource	&MateriaSource::operator=(const MateriaSource &obj)
 
 void	MateriaSource::learnMateria(AMateria* spell)
 {
+	/* Logger("Using learnMateria"); */
 	for (int i = 0; i < 4; i++)
 	{
 		if (this->space[i] == NULL)
@@ -71,6 +72,7 @@ void	MateriaSource::learnMateria(AMateria* spell)
 
 AMateria*	MateriaSource::createMateria(std::string const &type)
 {
+	/* Logger("Creating new Materia"); */
 	for (int i = 0; i < 4 && this->space[i]; i++)
 	{
 		if (type == this->space[i]->getType())
@@ -83,5 +85,8 @@ AMateria*	MateriaSource::createMateria(std::string const &type)
 void	MateriaSource::clearSpace()
 {
 	for (int i = 0; i < 4; i++)
-		delete this->space[i];
+	{
+		if (this->space[i])
+			delete this->space[i];
+	}
 }

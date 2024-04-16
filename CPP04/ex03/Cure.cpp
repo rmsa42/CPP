@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 15:11:38 by rumachad          #+#    #+#             */
-/*   Updated: 2024/04/04 12:12:57 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/04/16 11:59:36 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ Cure::Cure()
 	this->_type = "cure";
 }
 
-Cure::Cure(const Cure &obj)
+Cure::Cure(const Cure &obj) : AMateria(obj)
 {
 	/* std::cout << "Cure copy constructor" << std::endl; */
 	this->_type = "cure";
@@ -34,7 +34,7 @@ Cure::~Cure()
 
 Cure	&Cure::operator=(const Cure &obj)
 {
-	AMateria::operator=(obj);
+	(void)obj;
 	return (*this);
 }
 
