@@ -6,18 +6,13 @@
 #    By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/18 16:42:23 by rumachad          #+#    #+#              #
-#    Updated: 2024/07/31 10:07:50 by rumachad         ###   ########.fr        #
+#    Updated: 2024/07/31 16:15:23 by rumachad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = intern
+NAME = convert 
 
-SRC =	Bureaucrat.cpp \
-		AForm.cpp \
-		ShrubberyCreationForm.cpp \
-		RobotomyRequestForm.cpp \
-		PresidentialPardonForm.cpp \
-		Intern.cpp \
+SRC =	ScalarConverter.cpp \
 		main.cpp
 
 OBJ = $(SRC:.cpp=.o)

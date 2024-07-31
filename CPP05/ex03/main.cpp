@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 11:14:42 by rumachad          #+#    #+#             */
-/*   Updated: 2024/07/30 10:27:52 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/07/31 12:18:15 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
+#include <exception>
+#include <iostream>
 
 void presidentialTest()
 {
@@ -98,12 +101,26 @@ void bureaucratExecutor()
 
 int	main()
 {
-	shrubberyTest();
+	/* shrubberyTest();
 	std::cout << std::endl;
 	robotomyTest();
 	std::cout << std::endl;
 	presidentialTest();
 	std::cout << std::endl;
-	bureaucratExecutor();
+	bureaucratExecutor(); */
+	Intern intern;
+	AForm *ptr;
+	Bureaucrat bender("Bender", 1);
+
+	std::cout << std::endl;
+	ptr = intern.makeForm("shrubbery creation", "Bender");
+	try {
+		ptr->beSigned(bender);
+		ptr->execute(bender);
+	} catch (const std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
+	std::cout << std::endl;
+	delete ptr;
 	return (0);
 }
