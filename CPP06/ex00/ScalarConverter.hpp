@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 15:27:40 by rumachad          #+#    #+#             */
-/*   Updated: 2024/08/01 17:18:52 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/08/02 12:18:24 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <iomanip>
 # include <cstdlib>
 # include <cctype>
+# include <climits>
 
 typedef enum Type {
 	CHAR,
@@ -41,6 +42,7 @@ private:
 	static void convertFloat(std::string input);
 	static void convertChar(std::string input);
 	static void handleImpossible(std::string input);
+	static bool overflow(std::string input);
 	static void print(char c, int i, double d, float f);
 	static void printImpossible(float f, double d);
 	static t_Type parseInput(std::string input);

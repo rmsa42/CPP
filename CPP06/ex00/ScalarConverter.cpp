@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 15:27:32 by rumachad          #+#    #+#             */
-/*   Updated: 2024/08/01 17:19:43 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/08/02 14:42:56 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,26 +38,22 @@ ScalarConverter	&ScalarConverter::operator=(const ScalarConverter &obj)
 
 t_Type	ScalarConverter::parseInput(std::string input)
 {
+	size_t signal = input.find_first_of("-+");
 	size_t dot = input.find_first_not_of("-+0123456789");
 
-	if (input.length() == 1 && std::isalpha(input[0]))
+	if (input.length() == 1 && std::isalpha(input[0]))	
+		return (CHAR);	
+	else if (signal == input.find_last_of("-+") && (signal == 0 || signal == std::string::npos))
 	{
-		return (CHAR);
-	}
-	else if (dot == std::string::npos)
-	{
-		return (INT);
-	}
-	else if (std::isdigit(input[dot + 1])
-	&& input.find_first_not_of("0123456789", dot + 1) == std::string::npos)
-	{
-		return (DOUBLE);
-	}
-	else if ((input[dot] == 'f' || std::isdigit(input[dot + 1]))
-	&& input.find_first_not_of("0123456789f", dot + 1) == std::string::npos
-	&& input.find('f') == input.find_last_of('f'))
-	{
-		return (FLOAT);
+		if (dot == std::string::npos)
+			return (INT);
+		else if (input[dot] == '.' && std::isdigit(input[dot + 1])
+		&& input.find_first_not_of("0123456789", dot + 1) == std::string::npos)
+			return (DOUBLE);
+		else if ((input[dot] == 'f' || std::isdigit(input[dot + 1]))
+		&& input.find_first_not_of("0123456789f", dot + 1) == std::string::npos
+		&& input.length() - 1 == input.find('f'))
+			return (FLOAT);
 	}
 	return (IMPOSSIBLE);
 }
@@ -90,6 +86,7 @@ void ScalarConverter::handleImpossible(std::string input)
 {
 	float f = 0;
 	double d = 0;
+
 	if (!input.compare("nan"))
 	{
 		d = std::strtod(input.c_str(), NULL);
@@ -114,8 +111,8 @@ void ScalarConverter::handleImpossible(std::string input)
 
 void	ScalarConverter::convertInt(std::string input)
 {
-	std::cout << "This is Int" << std::endl;
-	int i = std::atoi(input.c_str());
+	ScalarConverter::overflow(input);
+	int i = std::strtol(input.c_str(), NULL, 0);
 	double d = static_cast<double>(i);
 	float f = static_cast<float>(i);
 	char c = static_cast<char>(i);
@@ -124,28 +121,30 @@ void	ScalarConverter::convertInt(std::string input)
 
 void	ScalarConverter::convertDouble(std::string input)
 {
-	std::cout << "This is Double" << std::endl;
 	double d = std::strtod(input.c_str(), NULL);
 	int i = static_cast<int>(d);
 	char c = static_cast<char>(d);
 	float f = static_cast<float>(d);
-	ScalarConverter::print(c, i, d, f);
-
+	if (ScalarConverter::overflow(input))
+		ScalarConverter::printImpossible(f, d);
+	else
+		ScalarConverter::print(c, i, d, f);
 }
 
 void	ScalarConverter::convertFloat(std::string input)
 {
-	std::cout << "This is Float" << std::endl;
 	float f = std::strtof(input.c_str(), NULL);
 	int i = static_cast<int>(f);
 	char c = static_cast<char>(f);
 	double d = static_cast<double>(f);
-	ScalarConverter::print(c, i, d, f);
+	if (ScalarConverter::overflow(input))
+		ScalarConverter::printImpossible(f, d);
+	else
+		ScalarConverter::print(c, i, d, f);
 }
 
 void	ScalarConverter::convertChar(std::string input)
 {
-	std::cout << "This is Char" << std::endl;
 	char c = input[0];
 	int i = static_cast<int>(c);
 	float f = static_cast<float>(c);
@@ -161,12 +160,23 @@ void	ScalarConverter::printImpossible(float f, double d)
 	std::cout << "double: " << d << std::endl;
 }
 
+bool	ScalarConverter::overflow(std::string input)
+{
+	double check = std::strtold(input.c_str(), NULL);
+	
+	if (check > INT_MAX || check < INT_MIN)	
+		return (true);
+	return (false);
+}
+
 void	ScalarConverter::print(char c, int i, double d, float f)
 {
-	if (std::isprint(c))
-		std::cout << "char: " << "'" << c << "'" << std::endl;
-	else
+	if (i >= 128 || i <= -129)
+		std::cout << "char: Impossible" << std::endl;
+	else if (!std::isprint(c)) 
 	 	std::cout << "char: Non displayable" << std::endl;
+	else
+		std::cout << "char: " << "'" << c << "'" << std::endl;
 	std::cout << "int: " << i << std::endl;
 	std::cout << std::setprecision(1) << std::fixed;
 	std::cout << "float: " << f << "f" << std::endl;
