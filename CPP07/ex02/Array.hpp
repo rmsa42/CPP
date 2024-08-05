@@ -1,34 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rumachad <rumachad@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/05 19:00:57 by rumachad          #+#    #+#             */
-/*   Updated: 2024/08/05 22:30:35 by rumachad         ###   ########.fr       */
+/*   Created: 2024/08/05 22:40:33 by rumachad          #+#    #+#             */
+/*   Updated: 2024/08/05 22:49:17 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "iter.hpp"
-#include <iostream>
+#ifndef ARRAY_HPP
+# define ARRAY_HPP
 
-void set(int &nbr)
+template <typename T>
+class Array
 {
-	nbr = 2;	
-}
+public:
 
-int main()
-{
-	int arr[4] = {1, 2, 3, 4};
-	
-	for (int i = 0; i < 4; i++) {
-		std::cout << arr[i] << std::endl;	
-	}
-	iter(arr, 4, &set);
+private:
 
-	for (int i = 0; i < 4; i++) {
-		std::cout << arr[i] << std::endl;	
-	}
-	return (0);
-}
+
+};
+
+#endif
