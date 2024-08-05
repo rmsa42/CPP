@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 13:41:28 by rumachad          #+#    #+#             */
-/*   Updated: 2024/07/30 10:05:28 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/08/05 15:30:59 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,6 @@ void	ShrubberyCreationForm::executer() const
 			<< "    ~  \\\\ //  ~ " << std::endl
 			<< " _- -   | | _- _  " << std::endl
 			<< "   _ -  | |   -_  " << std::endl
-			<< "      //  \\\\    " << std::endl;
+			<< "       //  \\\\    " << std::endl;
 	outfile.close();
 }

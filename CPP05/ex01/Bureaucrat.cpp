@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 14:26:35 by rumachad          #+#    #+#             */
-/*   Updated: 2024/07/30 14:58:27 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/08/05 12:19:08 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ Bureaucrat::Bureaucrat() : name_("Default"), grade_(150)
 Bureaucrat::Bureaucrat(const std::string name, int grade) : name_(name)
 {
 	if (grade > 150)
-		throw (Bureaucrat::GradeTooLowException());
+		throw (GradeTooLowException());
 	else if (grade < 1)
-		throw (Bureaucrat::GradeTooHighException());
+		throw (GradeTooHighException());
 	else
 	{
 		this->grade_ = grade;
@@ -30,7 +30,7 @@ Bureaucrat::Bureaucrat(const std::string name, int grade) : name_(name)
 	}
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &obj)
+Bureaucrat::Bureaucrat(const Bureaucrat &obj) : name_(obj.name_)
 {
 	std::cout << "Bureaucrat copy constructor" << std::endl;
 	*this = obj;
@@ -58,16 +58,16 @@ int	Bureaucrat::getGrade() const {return (this->grade_);}
 
 void	Bureaucrat::IncrementGrade()
 {
+	if (this->grade_ == 1)
+		throw (GradeTooHighException());
 	this->grade_--;
-	if (this->grade_ < 1)
-		throw (Bureaucrat::GradeTooHighException());
 }
 
 void	Bureaucrat::DecrementGrade()
 {
+	if (this->grade_ == 150)
+		throw (GradeTooLowException());
 	this->grade_++;
-	if (this->grade_ > 150)
-		throw (Bureaucrat::GradeTooLowException());
 }
 
 const char *Bureaucrat::GradeTooHighException::what() const throw()

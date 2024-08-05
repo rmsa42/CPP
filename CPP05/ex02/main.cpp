@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 11:14:42 by rumachad          #+#    #+#             */
-/*   Updated: 2024/07/30 10:27:52 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/08/05 14:08:32 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ void	shrubberyTest()
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << '\n';
-	}
-	delete shrubbery;	
+	}	
+	delete shrubbery;
 }
 
 void bureaucratExecutor()
@@ -88,9 +88,7 @@ void bureaucratExecutor()
 	john.executeForm(*shrubbery);
 	john.executeForm(*robotomy);
 	john.executeForm(*presidential);
-
-	std::cout << std::endl;
-
+	
 	delete shrubbery;
 	delete robotomy;
 	delete presidential;

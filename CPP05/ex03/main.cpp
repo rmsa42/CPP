@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 11:14:42 by rumachad          #+#    #+#             */
-/*   Updated: 2024/07/31 12:30:51 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/08/05 15:40:20 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 #include "AForm.hpp"
 #include "Intern.hpp"
 #include <cstddef>
-#include <exception>
-#include <iostream>
 
 int main()
 {

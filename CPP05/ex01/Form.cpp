@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 10:36:31 by rumachad          #+#    #+#             */
-/*   Updated: 2024/07/30 14:40:19 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/08/05 12:24:10 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,17 @@ Form::Form() : name_("Default"), sign_(false), signGrade_(150), execGrade_(150)
 	std::cout << "Form Constructor" << std::endl;
 }
 
-Form::Form(const std::string name, const int signGrade, const int execGrade) : name_(name), signGrade_(signGrade), execGrade_(execGrade)
+Form::Form(const std::string name, const int signGrade, const int execGrade) : name_(name), sign_(false), signGrade_(signGrade), execGrade_(execGrade)
 {
 	if (signGrade > 150 || execGrade > 150)
-		throw(Form::GradeTooLowException());
+		throw(GradeTooLowException());
 	else if (signGrade < 1 || execGrade < 1)
-		throw(Form::GradeTooHighException());
+		throw(GradeTooHighException());
 	else
 		std::cout << "Form (All Atributes) Constructor" << std::endl;	
 }
 
-Form::Form(const Form &obj) : signGrade_(obj.getSignGrade()), execGrade_(obj.getExecGrade())
+Form::Form(const Form &obj) : name_(obj.name_), signGrade_(obj.signGrade_), execGrade_(obj.execGrade_)
 {
 	std::cout << "Form copy constructor" << std::endl;
 	*this = obj;
@@ -72,7 +72,7 @@ const char *Form::GradeTooLowException::what() const throw()
 void	Form::beSigned(Bureaucrat &bureaucrat)
 {
 	if (bureaucrat.getGrade() >= this->signGrade_)
-		throw (Form::GradeTooLowException());
+		throw (GradeTooLowException());
 	this->sign_ = true;
 }
 
