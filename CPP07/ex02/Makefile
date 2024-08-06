@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rumachad <rumachad@student.42porto.com>    +#+  +:+       +#+         #
+#    By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/05 19:09:50 by rumachad          #+#    #+#              #
-#    Updated: 2024/08/05 22:54:04 by rumachad         ###   ########.fr        #
+#    Updated: 2024/08/06 12:50:47 by rumachad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
