@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 15:27:32 by rumachad          #+#    #+#             */
-/*   Updated: 2024/08/02 14:42:56 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/08/06 15:31:54 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_Type	ScalarConverter::parseInput(std::string input)
 	size_t signal = input.find_first_of("-+");
 	size_t dot = input.find_first_not_of("-+0123456789");
 
-	if (input.length() == 1 && std::isalpha(input[0]))	
+	if (input.length() == 1 && !std::isdigit(input[0]))	
 		return (CHAR);	
 	else if (signal == input.find_last_of("-+") && (signal == 0 || signal == std::string::npos))
 	{
