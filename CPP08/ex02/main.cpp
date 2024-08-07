@@ -5,37 +5,25 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/06 16:14:57 by rumachad          #+#    #+#             */
-/*   Updated: 2024/08/07 11:07:10 by rumachad         ###   ########.fr       */
+/*   Created: 2024/08/07 14:53:19 by rumachad          #+#    #+#             */
+/*   Updated: 2024/08/07 18:42:41 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "easyfind.hpp"
-#include <vector>
-#include <list>
+#include "MutantStack.hpp"
+#include <iostream>
 
 int main()
 {
-	std::vector<int> vect;
-	std::list<int> lst;
+	MutantStack<int, std::vector<int> > mutStack;
 
-	lst.assign(10, 15);
-	try {
-		easyfind(lst, 11);
-	} catch (const std::exception &e) {
-		std::cerr << e.what() << std::endl;
-	}
+	mutStack.push(190);
 
-	for (int i = 1; i < 13;i++) {
-		vect.push_back(i);
-	}
-	try {
-		easyfind(vect, 12);
-		vect.assign(10, 15);	
-		easyfind(vect, 15);
-		easyfind(vect, 10);
-	}
-	catch (const std::exception &e) {
-		std::cerr << e.what() << std::endl;
-	}
+	std::cout << mutStack.top() << std::endl;
+
+	mutStack.pop();
+
+	std::cout << mutStack.size() << std::endl;
+
+	return (0);
 }

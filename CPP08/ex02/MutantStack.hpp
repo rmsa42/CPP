@@ -1,36 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   easyfind.hpp                                       :+:      :+:    :+:   */
+/*   MutantStack.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/06 16:10:58 by rumachad          #+#    #+#             */
-/*   Updated: 2024/08/07 09:57:32 by rumachad         ###   ########.fr       */
+/*   Created: 2024/08/07 14:49:43 by rumachad          #+#    #+#             */
+/*   Updated: 2024/08/07 18:49:23 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EASYFIND_HPP
-# define EASYFIND_HPP
+#ifndef MUTANTSTACK_HPP
+# define MUTANTSTACK_HPP
 
-# include <algorithm>
+# include <stack>
+# include <vector>
 # include <iostream>
+# include <deque>
 
-class NotFoundException : public std::exception
+
+template <typename T, typename C>
+class MutantStack : public std::stack<T, C>
 {
 public:
-	virtual const char *what() const throw () {return ("Number not Found");};
+
+	MutantStack() {std::cout << "Mutant constructor" << std::endl;};
+	~MutantStack() {std::cout << "Mutant destructor" << std::endl;};
+	MutantStack(const MutantStack &obj) {
+		if (this != &obj) {
+			this->stack = obj.stack;
+		}
+		return (*this);
+	}
+
+private:
 };
-
-template <typename T>
-void easyfind(T cont, int target)
-{
-	typename T::const_iterator i;
-
-	i = std::find(cont.begin(), cont.end(), target);
-	if (i == cont.end())
-		throw (NotFoundException());
-	std::cout << "Found Number " << *i << std::endl;
-}
 
 #endif
