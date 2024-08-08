@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 11:08:52 by rumachad          #+#    #+#             */
-/*   Updated: 2024/08/07 14:40:55 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/08/08 11:48:38 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ void Span::addNumber(const int nbr)
 	if (this->_vec.size() >= this->_size)
 		throw (std::out_of_range("Out of range exception"));
 	this->_vec.push_back(nbr);
-	std::cout << "Added number" << std::endl;
 }
 
 std::vector<int>* Span::getVector()
@@ -69,7 +68,7 @@ int Span::shortestSpan()
 {
 	if (this->_vec.size() <= 1)
 		throw (NotEnoughNumbersException());
-	int bestDiff = *std::max_element(this->_vec.begin(), this->_vec.end());
+	long int bestDiff = std::labs(*std::max_element(this->_vec.begin(), this->_vec.end()));
 	std::sort(this->_vec.begin(), this->_vec.end());
 	for (std::vector<int>::iterator it = this->_vec.begin();it != this->_vec.end() - 1;it++) {	
 		int currentDiff = std::abs(*it - *(it + 1));
