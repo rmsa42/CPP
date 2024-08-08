@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 13:36:27 by rumachad          #+#    #+#             */
-/*   Updated: 2024/08/08 15:01:35 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/08/08 16:36:04 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,13 @@ public:
 	
 	BitcoinExchanger	&operator=(const BitcoinExchanger &obj);
 
-	std::map<std::string, int>* getMap();
+	std::map<std::string, float>* getMap();
 	void parseDatabase(const std::string dbName);
+	float getValue(const std::string& key);
 
 private:
 	
-	std::map<std::string, int> _db;
+	std::map<std::string, float> _db;
 };
 
 #endif

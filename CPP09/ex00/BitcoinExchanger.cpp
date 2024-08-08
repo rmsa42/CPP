@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 13:40:59 by rumachad          #+#    #+#             */
-/*   Updated: 2024/08/08 14:40:54 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/08/08 17:12:14 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,29 +33,39 @@ BitcoinExchanger::~BitcoinExchanger()
 BitcoinExchanger	&BitcoinExchanger::operator=(const BitcoinExchanger &obj)
 {
 	if (this != &obj) {
-		this->_db = std::map<std::string, int>(obj._db);
+		this->_db = std::map<std::string, float>(obj._db);
 	}
 	return (*this);
 }
 
-std::map<std::string, int>* BitcoinExchanger::getMap()
+std::map<std::string, float>* BitcoinExchanger::getMap()
 {
 	return (&this->_db);
 }
 
 void BitcoinExchanger::parseDatabase(const std::string dbName)
 {
-	std::ifstream file(dbName);
+	std::ifstream file(dbName.c_str());
 	std::string	line;
-	std::pair<std::string, int> dbPair;
+	std::pair<std::string, float> dbPair;
 
 	std::getline(file, line);
 	while (std::getline(file, line)) {
 		std::string first = line.substr(0, line.find(','));
 		std::string second = line.substr(line.find(',') + 1);
 		dbPair.first = first;
-		dbPair.second = std::atoi(second.c_str());
+		dbPair.second = std::atof(second.c_str());
 		this->_db.insert(dbPair);
 	}
 	file.close();
+}
+
+float BitcoinExchanger::getValue(const std::string& key)
+{
+	std::map<std::string, float>::iterator it = this->_db.find(key);
+	std::map<std::string, float>::iterator itlow = this->_db.lower_bound(key);
+	itlow--;
+	if (it == this->_db.end())
+		return (itlow->second);
+	return (it->second);
 }
