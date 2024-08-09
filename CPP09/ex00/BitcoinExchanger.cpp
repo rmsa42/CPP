@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 13:40:59 by rumachad          #+#    #+#             */
-/*   Updated: 2024/08/08 17:12:14 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/08/09 16:51:52 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,15 @@
 
 BitcoinExchanger::BitcoinExchanger()
 {
-	std::cout << "BitcoinExchanger Constructor" << std::endl;
 }
 
 BitcoinExchanger::BitcoinExchanger(const BitcoinExchanger &obj)
 {
-	std::cout << "BitcoinExchanger copy constructor" << std::endl;
 	*this = obj;
 }
 
 BitcoinExchanger::~BitcoinExchanger()
 {
-	std::cout << "BitcoinExchanger Destructor" << std::endl;	
 }
 
 /* ----------------------------------------------- */
@@ -63,9 +60,46 @@ void BitcoinExchanger::parseDatabase(const std::string dbName)
 float BitcoinExchanger::getValue(const std::string& key)
 {
 	std::map<std::string, float>::iterator it = this->_db.find(key);
+	if (it != this->_db.end()) {
+		return (it->second);
+	}
 	std::map<std::string, float>::iterator itlow = this->_db.lower_bound(key);
-	itlow--;
-	if (it == this->_db.end())
-		return (itlow->second);
-	return (it->second);
+	if (itlow != this->_db.begin()) {
+		itlow--;
+	}
+	return (itlow->second);
+}
+
+void BitcoinExchanger::validDate(const std::string& key)
+{
+	struct tm time;
+
+	if (strptime(key.c_str(), "%Y-%m-%d", &time) == NULL) {
+		throw (BadInputException());
+	}
+}
+
+void BitcoinExchanger::validValue(const float& value)
+{
+	if (value < 0) {
+		throw (NotPositiveNumberException());
+	}
+	else if (value > 1000) {
+		throw (LargeNumberException());
+	}
+}
+
+const char *BitcoinExchanger::LargeNumberException::what() const throw()
+{
+	return ("Error: too large a number.");
+}
+
+const char *BitcoinExchanger::NotPositiveNumberException::what() const throw()
+{
+	return ("Error: not a positive number.");
+}
+
+const char *BitcoinExchanger::BadInputException::what() const throw()
+{
+	return ("Error: bad input => ");
 }

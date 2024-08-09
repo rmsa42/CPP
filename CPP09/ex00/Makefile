@@ -6,7 +6,7 @@
 #    By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/08 12:34:13 by rumachad          #+#    #+#              #
-#    Updated: 2024/08/08 14:57:01 by rumachad         ###   ########.fr        #
+#    Updated: 2024/08/09 14:25:29 by rumachad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ all: $(NAME)
 clean:
 	rm -f $(OBJ)
 
-fclean: $(OBJ)
+fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
