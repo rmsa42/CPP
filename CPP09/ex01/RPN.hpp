@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 12:16:06 by rumachad          #+#    #+#             */
-/*   Updated: 2024/08/12 16:50:11 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/08/13 09:14:18 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,12 @@ public:
 	class ErrorExprException : public std::exception
 	{
 		public:
-			const char *what() const throw ();
+			virtual const char *what() const throw();
+	};
+	class InfinityException : public std::exception
+	{
+		public:
+			virtual const char *what() const throw();
 	};
 	
 	void printStack();

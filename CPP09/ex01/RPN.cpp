@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 12:16:47 by rumachad          #+#    #+#             */
-/*   Updated: 2024/08/12 17:35:12 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/08/13 09:17:41 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,13 @@ void RPN::calculate(const std::string& input)
 				break;
 			case '/':
 				pair = makePair();
+				if (pair.first == 0)
+					throw (InfinityException());
 				this->_expr.push(pair.second / pair.first);
 				break;
 			default:
+				if (!std::isdigit(*it))
+					throw (ErrorExprException());
 				this->_expr.push(*it - '0');
 		}
 	}
@@ -91,5 +95,10 @@ void RPN::printStack()
 
 const char *RPN::ErrorExprException::what() const throw()
 {
-	return ("Invalid Expression exception");
+	return ("Error");
+}
+
+const char *RPN::InfinityException::what() const throw()
+{
+	return ("inf");
 }
