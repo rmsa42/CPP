@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 11:48:02 by rumachad          #+#    #+#             */
-/*   Updated: 2024/08/19 17:29:26 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/08/21 18:00:28 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,20 @@
 # define PMERGEME_HPP
 
 # include <iostream>
-# include <iomanip>
 # include <exception>
-# include <list>
 # include <cstdlib>
 # include <utility>
 # include <algorithm>
+# include <vector>
 
+/* Vectors for Int */
+typedef std::vector<int> IntVec;
+typedef IntVec::iterator IntVecIt;
+
+/* Vectors for Pairs */
 typedef std::pair<int, int> IntPair;
-typedef std::list<IntPair> IntPairLst;
-typedef IntPairLst::const_iterator cIntPairLstItr;
-typedef IntPairLst::iterator IntPairLstItr;
+typedef std::vector<IntPair> PairVec;
+typedef PairVec::iterator PairVecIt;
 
 class PmergeMe
 {
@@ -36,14 +39,17 @@ public:
 	
 	PmergeMe	&operator=(const PmergeMe &obj);
 	
-	void fillList(char **argv);
-	void sortPairs();
-/* 	void mergeLst(); */
-	void printList(const IntPairLst& lst) const;
+	void fillVec(char **argv);
+	void fjmiSort(IntVec& vec);
+	PairVec makePairs(IntVec& vec);
+	IntVec extractLarger(PairVec& pairVec);
+	IntVec makePend(PairVec& pairVec);
+	void print(IntVec& vec);
+	void printPairs(PairVec& vec);
 
 private:
-	
-	IntPairLst _lst;
+
+	int straggler;
 };
 
 #endif
