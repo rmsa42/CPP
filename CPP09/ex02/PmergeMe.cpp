@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 11:59:58 by rumachad          #+#    #+#             */
-/*   Updated: 2024/08/21 18:11:27 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/08/22 17:31:32 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,19 +72,33 @@ void PmergeMe::fillVec(char **argv)
 
 void PmergeMe::fjmiSort(IntVec& vec)
 {
-	if (vec.size() <= 1) {
+	IntVec first;
+	IntVec second;
+
+	if (vec.size() % 2 != 0) {
+		straggler = vec.back();
+		vec.pop_back();
+	}
+	if (vec.size() < 2) {
+		return ;
+	}
+	if (vec.size() == 2) {
+		if (vec[0] > vec[1]) {
+			std::swap(vec[0], vec[1]);
+		}
 		return ;
 	}
 	PairVec pairVec = makePairs(vec);
 	printPairs(pairVec);
-	IntVec largerVec = extractLarger(pairVec);
-	print(largerVec);
-	std::cout << "Calling recursive" << std::endl;
-	std::cout << std::endl;
-	fjmiSort(largerVec);
-	IntVec pend = makePend(pairVec);
-/* 	largerVec.insert(largerVec.begin(), pend.front()); */
-	print(largerVec);
+	for (PairVecIt it = pairVec.begin();it != pairVec.end();it++) {
+		if (it->first < it->second) {
+			std::swap(it->first, it->second);
+		}
+		first.push_back(it->first);
+		second.push_back(it->second);
+	}
+	fjmiSort(first);
+	print(first);
 }
 
 PairVec PmergeMe::makePairs(IntVec& vec)
@@ -93,35 +107,9 @@ PairVec PmergeMe::makePairs(IntVec& vec)
 
 	for (IntVecIt it = vec.begin();it != vec.end();it+=2) {
 		IntPair pair;
-		if (*it < *(it + 1)) {
-			std::swap(*it, *(it + 1));
-		}
 		pair.first = *it;
 		pair.second = *(it + 1);
 		pairVec.push_back(pair);
 	}
 	return (pairVec);
-}
-
-IntVec PmergeMe::extractLarger(PairVec& pairVec)
-{
-	IntVec vec;
-
-	for (PairVecIt it = pairVec.begin();it != pairVec.end();it++) {
-		vec.push_back(it->first);
-	}
-	return (vec);
-}
-
-IntVec PmergeMe::makePend(PairVec& pairVec)
-{
-	IntVec vec;
-
-	for (PairVecIt it = pairVec.begin();it != pairVec.end();it++) {
-		vec.push_back(it->second);
-	}
-	if (straggler) {
-		vec.push_back(straggler);
-	}
-	return (vec);
 }

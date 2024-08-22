@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 11:48:02 by rumachad          #+#    #+#             */
-/*   Updated: 2024/08/21 18:00:28 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/08/22 17:12:55 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,6 @@ public:
 	void fillVec(char **argv);
 	void fjmiSort(IntVec& vec);
 	PairVec makePairs(IntVec& vec);
-	IntVec extractLarger(PairVec& pairVec);
-	IntVec makePend(PairVec& pairVec);
 	void print(IntVec& vec);
 	void printPairs(PairVec& vec);
 
