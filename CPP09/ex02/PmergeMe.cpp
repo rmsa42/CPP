@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 11:59:58 by rumachad          #+#    #+#             */
-/*   Updated: 2024/08/22 17:31:32 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/08/23 15:39:03by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,6 @@ PmergeMe::~PmergeMe()
 {
 	
 } */
-
-void PmergeMe::printPairs(PairVec& vec)
-{
-	std::cout << "Pairs: ";
-	for (PairVecIt it = vec.begin();it != vec.end();it++) {
-		std::cout << "(" << it->first << ", " << it->second << ")";
-	}
-	std::cout << std::endl;
-}
 
 void PmergeMe::print(IntVec& vec)
 {
@@ -70,46 +61,53 @@ void PmergeMe::fillVec(char **argv)
 	fjmiSort(input);
 }
 
-void PmergeMe::fjmiSort(IntVec& vec)
+IntVec PmergeMe::jacobsthalSeq(int pendSize)
 {
-	IntVec first;
-	IntVec second;
+	IntVec seq;
+	int curr = 3;
+	int n = 3;
 
-	if (vec.size() % 2 != 0) {
-		straggler = vec.back();
-		vec.pop_back();
+	for (int i = 0;i < pendSize;i++) {
+		seq.push_back(curr);
+		curr = std::pow(2, n) - curr;
+		n++;
 	}
-	if (vec.size() < 2) {
-		return ;
-	}
-	if (vec.size() == 2) {
-		if (vec[0] > vec[1]) {
-			std::swap(vec[0], vec[1]);
-		}
-		return ;
-	}
-	PairVec pairVec = makePairs(vec);
-	printPairs(pairVec);
-	for (PairVecIt it = pairVec.begin();it != pairVec.end();it++) {
-		if (it->first < it->second) {
-			std::swap(it->first, it->second);
-		}
-		first.push_back(it->first);
-		second.push_back(it->second);
-	}
-	fjmiSort(first);
-	print(first);
+	return (seq);
 }
 
-PairVec PmergeMe::makePairs(IntVec& vec)
+void PmergeMe::fjmiSort(IntVec& vec)
 {
-	PairVec pairVec;
+	IntVec bigger;
+	IntVec lower;
+	IntVec mainChain;
+
+	if (vec.size() <= 1) {return ;}
 
 	for (IntVecIt it = vec.begin();it != vec.end();it+=2) {
-		IntPair pair;
-		pair.first = *it;
-		pair.second = *(it + 1);
-		pairVec.push_back(pair);
+		if (*it > *(it + 1)) {
+			bigger.push_back(*it);
+			lower.push_back(*(it + 1));
+		} else {
+			bigger.push_back(*(it + 1));
+			lower.push_back(*it);
+		}
 	}
-	return (pairVec);
+	fjmiSort(bigger);
+	for (IntVecIt it = bigger.begin();it != bigger.end();it++) {
+		mainChain.push_back(*it);
+	}
+	mainChain.insert(mainChain.begin(), lower.front());
+	lower.erase(lower.begin());
+	IntVec seq = jacobsthalSeq(lower.size());
+	for (IntVecIt it = seq.begin();it != seq.end();it++) {
+		if (*it < (int)mainChain.size()) {
+			IntVecIt element = std::lower_bound(mainChain.begin(), mainChain.end(), mainChain[*it]);
+			mainChain.insert(element, lower.front());
+			lower.erase(lower.begin());
+		} else {
+			mainChain.insert(mainChain.end(), lower.front());
+			lower.erase(lower.begin());
+		}
+	}
+	print(mainChain);
 }

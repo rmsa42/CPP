@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 11:48:02 by rumachad          #+#    #+#             */
-/*   Updated: 2024/08/22 17:12:55 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/08/23 16:22:58 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <utility>
 # include <algorithm>
 # include <vector>
+# include <cmath>
 
 /* Vectors for Int */
 typedef std::vector<int> IntVec;
@@ -41,9 +42,8 @@ public:
 	
 	void fillVec(char **argv);
 	void fjmiSort(IntVec& vec);
-	PairVec makePairs(IntVec& vec);
+	IntVec jacobsthalSeq(int penSize);
 	void print(IntVec& vec);
-	void printPairs(PairVec& vec);
 
 private:
 
