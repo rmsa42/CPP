@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 11:48:02 by rumachad          #+#    #+#             */
-/*   Updated: 2024/08/23 16:22:58 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/08/26 14:14:37umachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,16 @@
 # include <utility>
 # include <algorithm>
 # include <vector>
+# include <list>
 # include <cmath>
 
 /* Vectors for Int */
 typedef std::vector<int> IntVec;
 typedef IntVec::iterator IntVecIt;
 
-/* Vectors for Pairs */
-typedef std::pair<int, int> IntPair;
-typedef std::vector<IntPair> PairVec;
-typedef PairVec::iterator PairVecIt;
+/* List for Int */
+typedef std::list<int> IntLst;
+typedef IntLst::iterator IntLstIt;
 
 class PmergeMe
 {
@@ -40,14 +40,26 @@ public:
 	
 	PmergeMe	&operator=(const PmergeMe &obj);
 	
-	void fillVec(char **argv);
-	void fjmiSort(IntVec& vec);
+	template <typename Container>
+	Container fillContainer(char **argv) {
+		Container input;
+
+		for (unsigned int i = 1;argv[i];i++) {
+			input.push_back(std::atoi(argv[i]));
+			if (input.back() < 0) {
+				throw (InvalidInputException());
+			}
+		}
+		return (input);
+	}
+
+	IntVec fjmiSort(IntVec& vec);
+	IntLst fjmiSort(IntLst& lst);
 	IntVec jacobsthalSeq(int penSize);
-	void print(IntVec& vec);
 
-private:
-
-	int straggler;
+	class InvalidInputException : public std::exception {
+		virtual const char *what() const throw();
+	};
 };
 
 #endif

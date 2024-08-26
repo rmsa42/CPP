@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 12:16:06 by rumachad          #+#    #+#             */
-/*   Updated: 2024/08/13 09:14:18 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/08/26 16:29:17 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,10 @@ public:
 	void calculate(const std::string& input);
 	Operands makePair();
 	
+	class OverflowException : public std::exception
+	{
+		virtual const char *what() const throw();
+	};
 	class ErrorExprException : public std::exception
 	{
 		public:

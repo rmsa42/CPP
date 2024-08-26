@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 12:16:47 by rumachad          #+#    #+#             */
-/*   Updated: 2024/08/13 09:17:41 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/08/26 16:59:22 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ void RPN::calculate(const std::string& input)
 			case '*':
 				pair = makePair();
 				this->_expr.push(pair.second * pair.first);
+				if (pair.second != 0 && this->_expr.top() / pair.second != pair.first)
+					throw (OverflowException());
 				break;
 			case '/':
 				pair = makePair();
@@ -83,6 +85,8 @@ void RPN::calculate(const std::string& input)
 				this->_expr.push(*it - '0');
 		}
 	}
+	if (this->_expr.size() != 1)
+		throw (ErrorExprException());
 }
 
 void RPN::printStack()
@@ -101,4 +105,9 @@ const char *RPN::ErrorExprException::what() const throw()
 const char *RPN::InfinityException::what() const throw()
 {
 	return ("inf");
+}
+
+const char *RPN::OverflowException::what() const throw()
+{
+	return ("Overflow");
 }

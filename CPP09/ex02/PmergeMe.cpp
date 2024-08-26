@@ -14,74 +14,64 @@
 
 PmergeMe::PmergeMe()
 {
-	std::cout << "PmergeMe Constructor" << std::endl;
+/* 	std::cout << "PmergeMe Constructor" << std::endl; */
 }
 
-/* PmergeMe::PmergeMe(const PmergeMe &obj)
+PmergeMe::PmergeMe(const PmergeMe &obj)
 {
-	std::cout << "PmergeMe copy constructor" << std::endl;
-} */
+/* 	std::cout << "PmergeMe copy constructor" << std::endl; */
+	*this = obj;
+}
 
 PmergeMe::~PmergeMe()
 {
-	std::cout << "PmergeMe Destructor" << std::endl;	
+/* 	std::cout << "PmergeMe Destructor" << std::endl;	 */
 }
 
 /* ----------------------------------------------- */
 
-/* PmergeMe	&PmergeMe::operator=(const PmergeMe &obj)
+PmergeMe	&PmergeMe::operator=(const PmergeMe &obj)
 {
-	
-} */
-
-void PmergeMe::print(IntVec& vec)
-{
-	std::cout << "Vec: ";
-	for (IntVecIt it = vec.begin();it != vec.end();it++) {
-		std::cout << *it << " ";
-	}
-	std::cout << std::endl;
-}
-
-void PmergeMe::fillVec(char **argv)
-{
-	IntVec input;
-
-	for (unsigned int i = 1;argv[i];i++) {
-		input.push_back(std::atoi(argv[i]));
-		if (input.back() < 0)
-			throw (std::exception());
-	}	
-	if (input.size() % 2 != 0) {
-		straggler = input.back();
-		input.pop_back();
-	} else {
-		straggler = false;
-	}
-	fjmiSort(input);
+	(void)obj;
+	return (*this);
 }
 
 IntVec PmergeMe::jacobsthalSeq(int pendSize)
 {
+	IntVec jacob;
 	IntVec seq;
 	int curr = 3;
 	int n = 3;
 
+	jacob.push_back(1);
 	for (int i = 0;i < pendSize;i++) {
-		seq.push_back(curr);
+		jacob.push_back(curr);
 		curr = std::pow(2, n) - curr;
 		n++;
+	}
+	seq.push_back(1);
+	for (int i = 1;i < pendSize;i++) {
+		for (int j = jacob[i];j > jacob[i - 1];j--) {
+			if (j <= pendSize) {
+				seq.push_back(j);
+			}
+		}
 	}
 	return (seq);
 }
 
-void PmergeMe::fjmiSort(IntVec& vec)
+IntVec PmergeMe::fjmiSort(IntVec& vec)
 {
 	IntVec bigger;
 	IntVec lower;
 	IntVec mainChain;
+	int straggler = false;
 
-	if (vec.size() <= 1) {return ;}
+	if (vec.size() <= 1) {return vec;}
+	if (vec.size() % 2) {
+		straggler = vec.back();
+		vec.pop_back();
+	}
 
 	for (IntVecIt it = vec.begin();it != vec.end();it+=2) {
 		if (*it > *(it + 1)) {
@@ -92,22 +82,60 @@ void PmergeMe::fjmiSort(IntVec& vec)
 			lower.push_back(*it);
 		}
 	}
-	fjmiSort(bigger);
-	for (IntVecIt it = bigger.begin();it != bigger.end();it++) {
-		mainChain.push_back(*it);
+	if (straggler) {
+		lower.push_back(straggler);
 	}
-	mainChain.insert(mainChain.begin(), lower.front());
-	lower.erase(lower.begin());
+	bigger = fjmiSort(bigger);
+	mainChain = bigger;
 	IntVec seq = jacobsthalSeq(lower.size());
 	for (IntVecIt it = seq.begin();it != seq.end();it++) {
-		if (*it < (int)mainChain.size()) {
-			IntVecIt element = std::lower_bound(mainChain.begin(), mainChain.end(), mainChain[*it]);
-			mainChain.insert(element, lower.front());
-			lower.erase(lower.begin());
+		IntVecIt element = std::lower_bound(mainChain.begin(), mainChain.end(), lower.at(*it - 1));
+		mainChain.insert(element, lower.at(*it - 1));
+	}
+	return (mainChain);
+}
+
+IntLst PmergeMe::fjmiSort(IntLst& lst)
+{
+	IntLst bigger;
+	IntLst lower;
+	IntLst mainChain;
+	int straggler = false;
+
+	if (lst.size() <= 1) {return lst;}
+	if (lst.size() % 2) {
+		straggler = lst.back();
+		lst.pop_back();
+	}
+
+	for (IntLstIt it = lst.begin();it != lst.end();++it) {
+		IntLstIt curr = it;
+		if (*it > *(++it)) {
+			bigger.push_back(*curr);
+			lower.push_back(*it);
 		} else {
-			mainChain.insert(mainChain.end(), lower.front());
-			lower.erase(lower.begin());
+			bigger.push_back(*it);
+			lower.push_back(*curr);
 		}
 	}
-	print(mainChain);
+	if (straggler) {
+		lower.push_back(straggler);
+	}
+	bigger = fjmiSort(bigger);
+	mainChain = bigger;
+	IntVec seq = jacobsthalSeq(lower.size());
+	for (IntVecIt it = seq.begin();it != seq.end();it++) {
+		IntLstIt index = lower.begin();
+		for (int i = 1;i < *it;i++) {
+			index++;
+		}
+		IntLstIt element = std::lower_bound(mainChain.begin(), mainChain.end(), *index);
+		mainChain.insert(element, *index);
+	}
+	return (mainChain);
+}
+
+const char *PmergeMe::InvalidInputException::what() const throw()
+{
+	return ("Invalid input exception");
 }
