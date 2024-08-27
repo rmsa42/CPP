@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 12:39:21 by rumachad          #+#    #+#             */
-/*   Updated: 2024/08/12 10:33:27 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/08/27 17:43:33 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,12 @@ std::pair<std::string, float> getPair(const std::string& line)
 	if (delim == line.npos) {
 		throw (BitcoinExchanger::BadInputException());
 	}
-	else if (line.find_first_not_of("0123456789", delim + 2) != line.npos) {
+	delim = line.find_first_not_of(' ', delim + 1);	
+	if (delim == line.npos) {
 		throw (BitcoinExchanger::BadInputException());
 	}
 	pair.first = line.substr(0, delim);
-	pair.second = std::atof(line.substr(delim + 1).c_str());
+	pair.second = std::atof(line.substr(delim).c_str());
 	return (pair);
 }
 

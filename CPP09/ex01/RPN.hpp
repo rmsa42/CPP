@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 12:16:06 by rumachad          #+#    #+#             */
-/*   Updated: 2024/08/26 16:29:17 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/08/27 16:21:07 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <utility>
 # include <string>
 # include <exception>
+# include <limits>
 
 typedef std::pair<int, int> Operands;
 

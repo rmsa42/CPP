@@ -44,13 +44,13 @@ IntVec PmergeMe::jacobsthalSeq(int pendSize)
 	int n = 3;
 
 	jacob.push_back(1);
-	for (int i = 0;i < pendSize;i++) {
+	while (jacob.back() < pendSize) {
 		jacob.push_back(curr);
 		curr = std::pow(2, n) - curr;
 		n++;
 	}
 	seq.push_back(1);
-	for (int i = 1;i < pendSize;i++) {
+	for (int i = 1;i < (int)jacob.size();i++) {
 		for (int j = jacob[i];j > jacob[i - 1];j--) {
 			if (j <= pendSize) {
 				seq.push_back(j);
@@ -64,7 +64,6 @@ IntVec PmergeMe::fjmiSort(IntVec& vec)
 {
 	IntVec bigger;
 	IntVec lower;
-	IntVec mainChain;
 	int straggler = false;
 
 	if (vec.size() <= 1) {return vec;}
@@ -86,13 +85,12 @@ IntVec PmergeMe::fjmiSort(IntVec& vec)
 		lower.push_back(straggler);
 	}
 	bigger = fjmiSort(bigger);
-	mainChain = bigger;
 	IntVec seq = jacobsthalSeq(lower.size());
 	for (IntVecIt it = seq.begin();it != seq.end();it++) {
-		IntVecIt element = std::lower_bound(mainChain.begin(), mainChain.end(), lower.at(*it - 1));
-		mainChain.insert(element, lower.at(*it - 1));
+		IntVecIt element = std::lower_bound(bigger.begin(), bigger.end(), lower.at(*it - 1));
+		bigger.insert(element, lower.at(*it - 1));
 	}
-	return (mainChain);
+	return (bigger);
 }
 
 IntLst PmergeMe::fjmiSort(IntLst& lst)
@@ -126,9 +124,7 @@ IntLst PmergeMe::fjmiSort(IntLst& lst)
 	IntVec seq = jacobsthalSeq(lower.size());
 	for (IntVecIt it = seq.begin();it != seq.end();it++) {
 		IntLstIt index = lower.begin();
-		for (int i = 1;i < *it;i++) {
-			index++;
-		}
+		std::advance(index, (*it - 1));
 		IntLstIt element = std::lower_bound(mainChain.begin(), mainChain.end(), *index);
 		mainChain.insert(element, *index);
 	}

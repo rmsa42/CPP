@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 12:16:47 by rumachad          #+#    #+#             */
-/*   Updated: 2024/08/26 16:59:22 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/08/27 14:15:39rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ void RPN::calculate(const std::string& input)
 {
 	Operands pair;
 
+	if (input.empty())
+		return ;
 	for (std::string::const_iterator it = input.begin(); it != input.end();it++) {
 		switch (*it) {
 			case ' ':
@@ -61,11 +63,16 @@ void RPN::calculate(const std::string& input)
 				break;
 			case '+':
 				pair = makePair();
+				if (pair.second > 0 && pair.first > std::numeric_limits<int>::max() - pair.second)
+					throw (OverflowException());
 				this->_expr.push(pair.second + pair.first);	
 				break;
 			case '-':
 				pair = makePair();
+				if (pair.second < std::numeric_limits<int>::min() + pair.first)
+					throw (OverflowException());
 				this->_expr.push(pair.second - pair.first);
+				if (pair.first)
 				break;
 			case '*':
 				pair = makePair();

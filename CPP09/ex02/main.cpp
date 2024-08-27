@@ -18,7 +18,7 @@ template <typename T>
 void printContainer(const T& cont)
 {
 	for (typename T::const_iterator it = cont.begin();it != cont.end();it++) {
-		std::cout << std::setw(5) << *it;
+		std::cout << std::setw(2) << " " << *it;
 	}
 	std::cout << std::endl;
 }
@@ -37,9 +37,6 @@ double sortContainer(T& container)
 	std::cout << "After: ";
 	printContainer(container);
 	return (sortTime);
-	std::cout << std::fixed << std::setprecision(6) << "Time to process a range of " << container.size()
-			  << " elements with std::vector : "
-			  << sortTime << " us" << std::endl; 
 }
 
 template <typename T>
