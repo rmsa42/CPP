@@ -30,8 +30,10 @@ std::pair<std::string, float> getPair(const std::string& line)
 	if (value.find_first_not_of(' ') == value.npos) {
 		throw (BitcoinExchanger::BadInputException());
 	}
-	size_t err = value.find_first_not_of("0123456789");
-	if (err != value.npos) {
+	size_t err = value.find_first_not_of("0123456789.");
+	size_t dot = value.find('.');
+	if (err != value.npos || dot != value.find_last_of('.')
+		|| !std::isdigit(value[0]) || !std::isdigit(value[value.size() - 1])) {
 		if (err == 0 && value[err] == '-') {
 			throw (BitcoinExchanger::NotPositiveNumberException());
 		}
