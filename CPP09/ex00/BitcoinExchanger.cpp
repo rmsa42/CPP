@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 13:40:59 by rumachad          #+#    #+#             */
-/*   Updated: 2024/08/12 11:04:59 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/08/28 12:24:38 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,7 @@ void BitcoinExchanger::validDate(const std::string& key)
 
 void BitcoinExchanger::validValue(const float& value)
 {
-	if (value < 0) {
-		throw (NotPositiveNumberException());
-	} else if (value > 1000) {
+	if (value > 1000) {
 		throw (LargeNumberException());
 	}
 }

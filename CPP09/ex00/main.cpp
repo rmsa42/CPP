@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 12:39:21 by rumachad          #+#    #+#             */
-/*   Updated: 2024/08/27 17:43:33 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/08/28 12:14:40 rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,24 @@ void printValues(std::pair<std::string, float>& pair, float value)
 std::pair<std::string, float> getPair(const std::string& line)
 {
 	std::pair<std::string, float> pair;
-	size_t delim = line.find('|');
+	std::string date = line.substr(0, line.find('|'));
 
-	if (delim == line.npos) {
+	if (date.size() + 1 == line.size()) {
 		throw (BitcoinExchanger::BadInputException());
 	}
-	delim = line.find_first_not_of(' ', delim + 1);	
-	if (delim == line.npos) {
+	pair.first = date;
+	std::string value = line.substr(line.find('|') + 2);
+	if (value.find_first_not_of(' ') == value.npos) {
 		throw (BitcoinExchanger::BadInputException());
 	}
-	pair.first = line.substr(0, delim);
-	pair.second = std::atof(line.substr(delim).c_str());
+	size_t err = value.find_first_not_of("0123456789");
+	if (err != value.npos) {
+		if (err == 0 && value[err] == '-') {
+			throw (BitcoinExchanger::NotPositiveNumberException());
+		}
+		throw (BitcoinExchanger::BadInputException());
+	}
+	pair.second = std::atof(value.c_str());
 	return (pair);
 }
 
