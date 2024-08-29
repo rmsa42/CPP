@@ -11,16 +11,16 @@
 /* ************************************************************************** */
 
 #ifndef PMERGEME_HPP
-# define PMERGEME_HPP
+#define PMERGEME_HPP
 
-# include <iostream>
-# include <exception>
-# include <cstdlib>
-# include <utility>
-# include <algorithm>
-# include <vector>
-# include <list>
-# include <cmath>
+#include <algorithm>
+#include <cmath>
+#include <cstdlib>
+#include <exception>
+#include <iostream>
+#include <list>
+#include <utility>
+#include <vector>
 
 /* Vectors for Int */
 typedef std::vector<int> IntVec;
@@ -30,24 +30,21 @@ typedef IntVec::iterator IntVecIt;
 typedef std::list<int> IntLst;
 typedef IntLst::iterator IntLstIt;
 
-class PmergeMe
-{
-public:
-
+class PmergeMe {
+  public:
 	PmergeMe();
-	PmergeMe(const PmergeMe &obj);
+	PmergeMe(const PmergeMe& obj);
 	~PmergeMe();
-	
-	PmergeMe	&operator=(const PmergeMe &obj);
-	
-	template <typename Container>
-	Container fillContainer(char **argv) {
+
+	PmergeMe& operator=(const PmergeMe& obj);
+
+	template <typename Container> Container fillContainer(char** argv) {
 		Container input;
 
-		for (unsigned int i = 1;argv[i];i++) {
+		for (unsigned int i = 1; argv[i]; i++) {
 			input.push_back(std::atoi(argv[i]));
 			if (input.back() < 0) {
-				throw (InvalidInputException());
+				throw(InvalidInputException());
 			}
 		}
 		return (input);
@@ -58,7 +55,7 @@ public:
 	IntVec jacobsthalSeq(int penSize);
 
 	class InvalidInputException : public std::exception {
-		virtual const char *what() const throw();
+		virtual const char* what() const throw();
 	};
 };
 

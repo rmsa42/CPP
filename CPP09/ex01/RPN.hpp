@@ -11,51 +11,44 @@
 /* ************************************************************************** */
 
 #ifndef RNP_HPP
-# define RNP_HPP
+#define RNP_HPP
 
-# include <iostream>
-# include <stack>
-# include <utility>
-# include <string>
-# include <exception>
-# include <limits>
+#include <exception>
+#include <iostream>
+#include <limits>
+#include <stack>
+#include <string>
+#include <utility>
 
 typedef std::pair<int, int> Operands;
 
-class RPN
-{
-public:
-
+class RPN {
+  public:
 	RPN();
-	RPN(const RPN &obj);
+	RPN(const RPN& obj);
 	~RPN();
-	
-	
-	RPN	&operator=(const RPN &obj);
+
+	RPN& operator=(const RPN& obj);
 
 	void calculate(const std::string& input);
 	Operands makePair();
-	
-	class OverflowException : public std::exception
-	{
-		virtual const char *what() const throw();
+
+	class OverflowException : public std::exception {
+		virtual const char* what() const throw();
 	};
-	class ErrorExprException : public std::exception
-	{
-		public:
-			virtual const char *what() const throw();
+	class ErrorExprException : public std::exception {
+	  public:
+		virtual const char* what() const throw();
 	};
-	class InfinityException : public std::exception
-	{
-		public:
-			virtual const char *what() const throw();
+	class InfinityException : public std::exception {
+	  public:
+		virtual const char* what() const throw();
 	};
-	
+
 	void printStack();
 
-private:
-
+  private:
 	std::stack<int> _expr;
 };
 
-# endif
+#endif

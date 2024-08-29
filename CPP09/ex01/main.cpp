@@ -12,8 +12,7 @@
 
 #include "RPN.hpp"
 
-int main(int argc, char **argv)
-{
+int main(int argc, char** argv) {
 	RPN rpn;
 
 	if (argc > 1) {

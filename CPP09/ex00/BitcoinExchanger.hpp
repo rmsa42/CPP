@@ -11,26 +11,25 @@
 /* ************************************************************************** */
 
 #ifndef BITCOINEXCHANGER_HPP
-# define BITCOINEXCHANGER_HPP
+#define BITCOINEXCHANGER_HPP
 
-# include <map>
-# include <string>
-# include <iostream>
-# include <fstream>
-# include <utility>
-# include <cstdlib>
-# include <exception>
-# include <time.h>
+#include <time.h>
 
-class BitcoinExchanger
-{
-public:
+#include <cstdlib>
+#include <exception>
+#include <fstream>
+#include <iostream>
+#include <map>
+#include <string>
+#include <utility>
 
+class BitcoinExchanger {
+  public:
 	BitcoinExchanger();
-	BitcoinExchanger(const BitcoinExchanger &obj);
+	BitcoinExchanger(const BitcoinExchanger& obj);
 	~BitcoinExchanger();
-	
-	BitcoinExchanger	&operator=(const BitcoinExchanger &obj);
+
+	BitcoinExchanger& operator=(const BitcoinExchanger& obj);
 
 	std::map<std::string, float>* getMap();
 	void parseDatabase(const std::string dbName);
@@ -38,25 +37,21 @@ public:
 
 	static void validDate(const std::string& key);
 	static void validValue(const float& value);
-	
-	class LargeNumberException : public std::exception
-	{
-		public:
-			virtual const char *what() const throw();
+
+	class LargeNumberException : public std::exception {
+	  public:
+		virtual const char* what() const throw();
 	};
-	class NotPositiveNumberException : public std::exception
-	{
-		public:
-			virtual const char *what() const throw();
+	class NotPositiveNumberException : public std::exception {
+	  public:
+		virtual const char* what() const throw();
 	};
-	class BadInputException : public std::exception
-	{
-		public:
-			virtual const char *what() const throw();
+	class BadInputException : public std::exception {
+	  public:
+		virtual const char* what() const throw();
 	};
 
-private:
-	
+  private:
 	std::map<std::string, float> _db;
 };
 

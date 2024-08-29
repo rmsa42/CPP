@@ -10,22 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PmergeMe.hpp"
 #include <ctime>
 #include <iomanip>
 
-template <typename T>
-void printContainer(const T& cont)
-{
-	for (typename T::const_iterator it = cont.begin();it != cont.end();it++) {
+#include "PmergeMe.hpp"
+
+template <typename T> void printContainer(const T& cont) {
+	for (typename T::const_iterator it = cont.begin(); it != cont.end(); it++) {
 		std::cout << std::setw(2) << " " << *it;
 	}
 	std::cout << std::endl;
 }
 
-template <typename T>
-double sortContainer(T& container)
-{
+template <typename T> double sortContainer(T& container) {
 	double sortTime = 0;
 	PmergeMe obj;
 
@@ -40,15 +37,14 @@ double sortContainer(T& container)
 }
 
 template <typename T>
-void printTime(const std::string type, T& container, double timer)
-{
-	std::cout << std::fixed << std::setprecision(6) << "Time to process a range of "
-			  << container.size() << " elements with std::" << type << " : "
-			  << timer << " us" << std::endl; 
+void printTime(const std::string type, T& container, double timer) {
+	std::cout << std::fixed << std::setprecision(6)
+			  << "Time to process a range of " << container.size()
+			  << " elements with std::" << type << " : " << timer << " us"
+			  << std::endl;
 }
 
-int main(int argc, char **argv)
-{
+int main(int argc, char** argv) {
 	PmergeMe merge;
 	IntVec vec;
 	IntLst lst;

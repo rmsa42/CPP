@@ -10,40 +10,30 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "BitcoinExchanger.hpp"
+#include "BitcoinExchanger.hpp"
 
-BitcoinExchanger::BitcoinExchanger()
-{
-}
+BitcoinExchanger::BitcoinExchanger() {}
 
-BitcoinExchanger::BitcoinExchanger(const BitcoinExchanger &obj)
-{
-	*this = obj;
-}
+BitcoinExchanger::BitcoinExchanger(const BitcoinExchanger& obj) { *this = obj; }
 
-BitcoinExchanger::~BitcoinExchanger()
-{
-}
+BitcoinExchanger::~BitcoinExchanger() {}
 
 /* ----------------------------------------------- */
 
-BitcoinExchanger	&BitcoinExchanger::operator=(const BitcoinExchanger &obj)
-{
+BitcoinExchanger& BitcoinExchanger::operator=(const BitcoinExchanger& obj) {
 	if (this != &obj) {
 		this->_db = std::map<std::string, float>(obj._db);
 	}
 	return (*this);
 }
 
-std::map<std::string, float>* BitcoinExchanger::getMap()
-{
+std::map<std::string, float>* BitcoinExchanger::getMap() {
 	return (&this->_db);
 }
 
-void BitcoinExchanger::parseDatabase(const std::string dbName)
-{
+void BitcoinExchanger::parseDatabase(const std::string dbName) {
 	std::ifstream file(dbName.c_str());
-	std::string	line;
+	std::string line;
 	std::pair<std::string, float> dbPair;
 
 	std::getline(file, line);
@@ -57,8 +47,7 @@ void BitcoinExchanger::parseDatabase(const std::string dbName)
 	file.close();
 }
 
-float BitcoinExchanger::getValue(const std::string& key)
-{
+float BitcoinExchanger::getValue(const std::string& key) {
 	std::map<std::string, float>::iterator it = this->_db.find(key);
 	if (it != this->_db.end()) {
 		return (it->second);
@@ -71,33 +60,28 @@ float BitcoinExchanger::getValue(const std::string& key)
 	return (0);
 }
 
-void BitcoinExchanger::validDate(const std::string& key)
-{
+void BitcoinExchanger::validDate(const std::string& key) {
 	struct tm time;
 
 	if (strptime(key.c_str(), "%Y-%m-%d", &time) == NULL) {
-		throw (BadInputException());
+		throw(BadInputException());
 	}
 }
 
-void BitcoinExchanger::validValue(const float& value)
-{
+void BitcoinExchanger::validValue(const float& value) {
 	if (value > 1000) {
-		throw (LargeNumberException());
+		throw(LargeNumberException());
 	}
 }
 
-const char *BitcoinExchanger::LargeNumberException::what() const throw()
-{
+const char* BitcoinExchanger::LargeNumberException::what() const throw() {
 	return ("Error: too large a number.");
 }
 
-const char *BitcoinExchanger::NotPositiveNumberException::what() const throw()
-{
+const char* BitcoinExchanger::NotPositiveNumberException::what() const throw() {
 	return ("Error: not a positive number.");
 }
 
-const char *BitcoinExchanger::BadInputException::what() const throw()
-{
+const char* BitcoinExchanger::BadInputException::what() const throw() {
 	return ("Error: bad input => ");
 }
