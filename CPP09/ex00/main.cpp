@@ -54,8 +54,9 @@ void parseInput(const std::string& inputFile, BitcoinExchanger& lol) {
 	while (std::getline(file, line)) {
 		try {
 			pair = getPair(line);
-			BitcoinExchanger::validDate(pair.first);
+			lol.validDate(pair.first);
 			BitcoinExchanger::validValue(pair.second);
+			std::cout << pair.first << std::endl;
 			printValues(pair, lol.getValue(pair.first) * pair.second);
 		} catch (const BitcoinExchanger::BadInputException& e) {
 			std::cerr << e.what() << line << std::endl;

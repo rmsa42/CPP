@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 13:36:27 by rumachad          #+#    #+#             */
-/*   Updated: 2024/08/09 16:35:44 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/08/30 12:33:40 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,11 @@ class BitcoinExchanger {
 	void parseDatabase(const std::string dbName);
 	float getValue(const std::string& key);
 
-	static void validDate(const std::string& key);
+	void validDate(const std::string& key) const;
+	bool validYear(const unsigned int year) const;
+	bool validMonth(const unsigned int month) const;
+	bool validDay(const unsigned int day, const unsigned int year, const unsigned int month) const;
+	bool isLeapYear(const unsigned int year) const;
 	static void validValue(const float& value);
 
 	class LargeNumberException : public std::exception {
