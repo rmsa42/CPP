@@ -1,0 +1,11 @@
+Input: "2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2* * * * * * * * * * * * * * * * * * * * * * * * * * * * 2 * 1 - 2 * 1 + 1 +"
+Output: Overflow (In '+' operator)
+
+Input: "2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2* * * * * * * * * * * * * * * * * * * * * * * * * * * * 2 * 1 - 2 * 1 2 - * 1 - 1 - 1 -"
+OUtput: Overflow (In '-' operator)
+
+Input: "2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2* * * * * * * * * * * * * * * * * * * * * * * * * * * * 2 *2 *"
+Output: Overflow (In '*' operator)
+
+Input: "4 1 0 * /" (4 / 0)
+Output: Infinity (Division by 0)
