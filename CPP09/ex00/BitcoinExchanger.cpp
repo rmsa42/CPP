@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 13:40:59 by rumachad          #+#    #+#             */
-/*   Updated: 2024/08/30 16:47:11 by rumachad         ###   ########.fr       */
+/*   Updated: 2024/09/03 10:21:11 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,19 +105,16 @@ void BitcoinExchanger::validDate(const std::string& key) const {
 		throw(BitcoinExchanger::BadInputException());
 	}
 	const std::string year = key.substr(0, delim);
-	std::cout << "Year: " << year << std::endl;
 	if (year.size() != 4 || year.find_first_not_of("0123456789") != year.npos
 		|| !validYear(std::atoi(year.c_str()))) {
 		throw(BitcoinExchanger::BadInputException());
 	}
 	const std::string month = key.substr(delim + 1, delim2 - delim - 1);
-	std::cout << "Month: " << month << std::endl;
 	if (month.size() != 2 || month.find_first_not_of("0123456789") != month.npos
 		|| !validMonth(std::atoi(month.c_str()))) {
 		throw(BitcoinExchanger::BadInputException());
 	}
 	const std::string day = key.substr(delim2 + 1, key.size() - delim2 - 2);
-	std::cout << "Day: " << day << std::endl;
 	if (day.size() != 2 || day.find_first_not_of("0123456789") != day.npos
 		|| !validDay(std::atoi(day.c_str()), std::atoi(year.c_str()),
 					 std::atoi(month.c_str()))) {

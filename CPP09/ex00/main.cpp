@@ -18,6 +18,9 @@ void printValues(std::pair<std::string, float>& pair, float value) {
 }
 
 std::pair<std::string, float> getPair(const std::string& line) {
+	if (line.empty()) {
+		throw (BitcoinExchanger::BadInputException());
+	}
 	std::pair<std::string, float> pair;
 	std::string date = line.substr(0, line.find('|'));
 
@@ -56,7 +59,6 @@ void parseInput(const std::string& inputFile, BitcoinExchanger& lol) {
 			pair = getPair(line);
 			lol.validDate(pair.first);
 			BitcoinExchanger::validValue(pair.second);
-			std::cout << pair.first << std::endl;
 			printValues(pair, lol.getValue(pair.first) * pair.second);
 		} catch (const BitcoinExchanger::BadInputException& e) {
 			std::cerr << e.what() << line << std::endl;
